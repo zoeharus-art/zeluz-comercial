@@ -813,11 +813,13 @@ tr.tot td { font-weight: 700; background: rgba(222,180,40,.06); border-top: 2px 
   .kpi-row { grid-template-columns: repeat(2,1fr); }
   .chart-calendar-row { grid-template-columns: 1fr; }
   .rotina-timeline { grid-template-columns: repeat(3,1fr); }
+  #termometro-etapas { grid-template-columns: repeat(3,1fr) !important; }
 }
 @media(max-width:576px) {
   .content { padding: 16px 12px; }
   .kpi-row { grid-template-columns: 1fr; }
   .rotina-timeline { grid-template-columns: 1fr; }
+  #termometro-etapas { grid-template-columns: 1fr !important; }
   .meta-grid { grid-template-columns: 1fr; }
   .tracker-grid { grid-template-columns: 65px repeat(5,1fr) 55px; font-size: 10px; }
   table { font-size: 11px; }
@@ -1037,6 +1039,46 @@ tr.tot td { font-weight: 700; background: rgba(222,180,40,.06); border-top: 2px 
   </div>
 </div>
 
+
+<!-- ===== TERMÔMETRO DA SEMANA ===== -->
+<h2 class="sec"><i class="bi bi-thermometer-half" style="color:var(--z-gold)"></i> Termômetro da Semana</h2>
+<div id="termometro-etapas" style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:24px">
+  <div class="etapa-card" id="etapa-card-1" style="background:var(--z-white);border-radius:var(--radius-md);padding:14px;border:1.5px solid rgba(192,57,43,.20);position:relative;overflow:hidden">
+    <div style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#C0392B;margin-bottom:2px">Etapa 1</div>
+    <div style="font-size:11px;color:var(--z-gray-500);margin-bottom:8px">01–04/abr · 8%</div>
+    <div style="position:relative;height:8px;background:rgba(35,77,103,.06);border-radius:4px;overflow:hidden;margin-bottom:6px"><div id="etapa-bar-1" style="height:100%;border-radius:4px;background:linear-gradient(90deg,#C0392B,#E74C3C);width:0%;transition:width .4s ease"></div></div>
+    <div style="display:flex;justify-content:space-between;font-size:11px"><span id="etapa-val-1" style="font-weight:700;color:var(--z-blue)">R$ 0</span><span id="etapa-pct-1" style="color:var(--z-gray-400)">0%</span></div>
+    <div id="etapa-status-1" style="font-size:10px;margin-top:4px;font-weight:600;color:var(--z-gray-400)">Meta: R$ 8.575</div>
+  </div>
+  <div class="etapa-card" id="etapa-card-2" style="background:var(--z-white);border-radius:var(--radius-md);padding:14px;border:1.5px solid rgba(39,174,96,.20);position:relative;overflow:hidden">
+    <div style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#27AE60;margin-bottom:2px">Etapa 2</div>
+    <div style="font-size:11px;color:var(--z-gray-500);margin-bottom:8px">06–11/abr · 27%</div>
+    <div style="position:relative;height:8px;background:rgba(35,77,103,.06);border-radius:4px;overflow:hidden;margin-bottom:6px"><div id="etapa-bar-2" style="height:100%;border-radius:4px;background:linear-gradient(90deg,#27AE60,#2ECC71);width:0%;transition:width .4s ease"></div></div>
+    <div style="display:flex;justify-content:space-between;font-size:11px"><span id="etapa-val-2" style="font-weight:700;color:var(--z-blue)">R$ 0</span><span id="etapa-pct-2" style="color:var(--z-gray-400)">0%</span></div>
+    <div id="etapa-status-2" style="font-size:10px;margin-top:4px;font-weight:600;color:var(--z-gray-400)">Meta: R$ 28.941</div>
+  </div>
+  <div class="etapa-card" id="etapa-card-3" style="background:var(--z-white);border-radius:var(--radius-md);padding:14px;border:1.5px solid rgba(35,77,103,.20);position:relative;overflow:hidden">
+    <div style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--z-blue);margin-bottom:2px">Etapa 3</div>
+    <div style="font-size:11px;color:var(--z-gray-500);margin-bottom:8px">13–18/abr · 27%</div>
+    <div style="position:relative;height:8px;background:rgba(35,77,103,.06);border-radius:4px;overflow:hidden;margin-bottom:6px"><div id="etapa-bar-3" style="height:100%;border-radius:4px;background:linear-gradient(90deg,var(--z-blue),#3a6d87);width:0%;transition:width .4s ease"></div></div>
+    <div style="display:flex;justify-content:space-between;font-size:11px"><span id="etapa-val-3" style="font-weight:700;color:var(--z-blue)">R$ 0</span><span id="etapa-pct-3" style="color:var(--z-gray-400)">0%</span></div>
+    <div id="etapa-status-3" style="font-size:10px;margin-top:4px;font-weight:600;color:var(--z-gray-400)">Meta: R$ 28.941</div>
+  </div>
+  <div class="etapa-card" id="etapa-card-4" style="background:var(--z-white);border-radius:var(--radius-md);padding:14px;border:1.5px solid rgba(212,133,10,.20);position:relative;overflow:hidden">
+    <div style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#D4850A;margin-bottom:2px">Etapa 4</div>
+    <div style="font-size:11px;color:var(--z-gray-500);margin-bottom:8px">20–25/abr · 20%</div>
+    <div style="position:relative;height:8px;background:rgba(35,77,103,.06);border-radius:4px;overflow:hidden;margin-bottom:6px"><div id="etapa-bar-4" style="height:100%;border-radius:4px;background:linear-gradient(90deg,#D4850A,#F39C12);width:0%;transition:width .4s ease"></div></div>
+    <div style="display:flex;justify-content:space-between;font-size:11px"><span id="etapa-val-4" style="font-weight:700;color:var(--z-blue)">R$ 0</span><span id="etapa-pct-4" style="color:var(--z-gray-400)">0%</span></div>
+    <div id="etapa-status-4" style="font-size:10px;margin-top:4px;font-weight:600;color:var(--z-gray-400)">Meta: R$ 21.438</div>
+  </div>
+  <div class="etapa-card" id="etapa-card-5" style="background:var(--z-white);border-radius:var(--radius-md);padding:14px;border:1.5px solid rgba(46,125,138,.20);position:relative;overflow:hidden">
+    <div style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--z-vetcare);margin-bottom:2px">Etapa 5</div>
+    <div style="font-size:11px;color:var(--z-gray-500);margin-bottom:8px">27–30/abr · 18%</div>
+    <div style="position:relative;height:8px;background:rgba(35,77,103,.06);border-radius:4px;overflow:hidden;margin-bottom:6px"><div id="etapa-bar-5" style="height:100%;border-radius:4px;background:linear-gradient(90deg,var(--z-vetcare),#5AABB5);width:0%;transition:width .4s ease"></div></div>
+    <div style="display:flex;justify-content:space-between;font-size:11px"><span id="etapa-val-5" style="font-weight:700;color:var(--z-blue)">R$ 0</span><span id="etapa-pct-5" style="color:var(--z-gray-400)">0%</span></div>
+    <div id="etapa-status-5" style="font-size:10px;margin-top:4px;font-weight:600;color:var(--z-gray-400)">Meta: R$ 19.293</div>
+  </div>
+</div>
 
 <!-- ===== CALENDARIO 5 ETAPAS ===== -->
 <h2 class="sec"><i class="bi bi-calendar3" style="color:var(--z-gold)"></i> Calendário Abril 2026 — 5 Etapas</h2>
@@ -2600,6 +2642,73 @@ function calc(){
   });
   setFalta('sumfalta-eco', ECO_BASE - eco);
   setFalta('sumfalta-total', TOTAL_BASE - total);
+
+  /* Termômetro da Semana — atualiza cards de etapa */
+  var ETAPA_METAS_ECO = [8575, 28941, 28941, 21438, 19293]; // Ecossistema Cuidado por etapa
+  for(var s=1; s<=5; s++){
+    var semTotal = 0;
+    var seenSem = {};
+    document.querySelectorAll('input[data-sem="'+s+'"]').forEach(function(inp){
+      var a = inp.dataset.area;
+      if(a === 'hosp' || a === 'daycare') return;
+      var k = a + '-' + s;
+      if(seenSem[k]) return;
+      seenSem[k] = true;
+      semTotal += parseNum(inp.value);
+    });
+    var metaEtapa = ETAPA_METAS_ECO[s-1];
+    var pctEtapa = metaEtapa > 0 ? Math.round((semTotal/metaEtapa)*100) : 0;
+    elSet('etapa-val-'+s, fmt(semTotal));
+    elSet('etapa-pct-'+s, pctEtapa+'%');
+    styleSet('etapa-bar-'+s, 'width', Math.min(100, pctEtapa)+'%');
+    var statusEl = document.getElementById('etapa-status-'+s);
+    if(statusEl){
+      if(semTotal === 0){ statusEl.textContent = 'Meta: ' + fmt(metaEtapa); statusEl.style.color = 'var(--z-gray-400)'; }
+      else if(semTotal >= metaEtapa){ statusEl.textContent = 'Meta batida! +' + fmt(semTotal - metaEtapa); statusEl.style.color = 'var(--z-green)'; }
+      else { statusEl.textContent = 'Falta: ' + fmt(metaEtapa - semTotal); statusEl.style.color = 'var(--z-red)'; }
+    }
+    var cardEl = document.getElementById('etapa-card-'+s);
+    if(cardEl){
+      if(semTotal > 0 && semTotal >= metaEtapa) cardEl.style.boxShadow = '0 0 0 2px var(--z-green), var(--shadow-md)';
+      else if(semTotal > 0) cardEl.style.boxShadow = '';
+      else cardEl.style.boxShadow = '';
+    }
+  }
+  /* Destacar etapa atual */
+  var hoje = new Date();
+  var dia = hoje.getDate();
+  var mes = hoje.getMonth();
+  var ano = hoje.getFullYear();
+  if(mes === 3 && ano === 2026){
+    var etapaAtual = dia <= 5 ? 1 : dia <= 12 ? 2 : dia <= 19 ? 3 : dia <= 26 ? 4 : 5;
+    var cardAtual = document.getElementById('etapa-card-'+etapaAtual);
+    if(cardAtual){ cardAtual.style.transform = 'scale(1.03)'; cardAtual.style.boxShadow = '0 0 0 2px var(--z-gold), var(--shadow-lg)'; }
+  }
+
+  /* Verde/Vermelho nos inputs semanais — compara com meta Cuidado da etapa */
+  var ETAPA_PESOS = [0.08, 0.27, 0.27, 0.20, 0.18];
+  var seenColor = {};
+  document.querySelectorAll('input[data-area][data-sem]').forEach(function(inp){
+    var area = inp.dataset.area;
+    var sem = parseInt(inp.dataset.sem);
+    var key = area + '-' + sem + '-' + (inp.closest('.person-view') ? inp.closest('.person-view').id : 'geral');
+    if(seenColor[key]) return;
+    seenColor[key] = true;
+    var m = METAS[area];
+    if(!m) return;
+    var metaEtapa = Math.round(m.base * ETAPA_PESOS[sem - 1]);
+    var val = parseNum(inp.value);
+    if(inp.value.trim() === ''){
+      inp.style.backgroundColor = '';
+      inp.style.color = '';
+    } else if(val >= metaEtapa){
+      inp.style.backgroundColor = 'rgba(39,174,96,.12)';
+      inp.style.color = '#27AE60';
+    } else {
+      inp.style.backgroundColor = 'rgba(192,57,43,.08)';
+      inp.style.color = '#C0392B';
+    }
+  });
 
   /* Fernanda resumo — IDs removidos (seção deletada), calls mantidos para compatibilidade */
   elSet('f-r3-spa', fmt(spa)); elSet('f-r3-pct-spa', pct(spa,SPA_BASE)+'%');
