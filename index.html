@@ -812,6 +812,7 @@ tr.tot td { font-weight: 700; background: rgba(222,180,40,.06); border-top: 2px 
   .hamburger { display: flex; }
   .kpi-row { grid-template-columns: repeat(2,1fr); }
   .chart-calendar-row { grid-template-columns: 1fr; }
+  #view-banco-jogos > div:nth-of-type(4) { grid-template-columns: 1fr !important; }
   .rotina-timeline { grid-template-columns: repeat(3,1fr); }
 }
 @media(max-width:576px) {
@@ -946,6 +947,7 @@ tr.tot td { font-weight: 700; background: rgba(222,180,40,.06); border-top: 2px 
     <div class="subnav" id="geral-sub" style="display:none">
       <a class="nav-item nav-sub" id="nav-estrategias-jogos" onclick="switchView('estrategias-jogos')"><i class="bi bi-lightning-charge" style="font-size:14px"></i> Estratégias & Jogos</a>
       <a class="nav-item nav-sub" id="nav-metas-mes" onclick="switchView('metas-mes')"><i class="bi bi-trophy" style="font-size:14px"></i> Metas do Mês</a>
+      <a class="nav-item nav-sub" id="nav-banco-jogos" onclick="switchView('banco-jogos')"><i class="bi bi-controller" style="font-size:14px"></i> Banco de Jogos</a>
     </div>
 
     <div class="nav-section-label">Gestão</div>
@@ -1594,6 +1596,220 @@ tr.tot td { font-weight: 700; background: rgba(222,180,40,.06); border-top: 2px 
   </div>
 
 </div><!-- fim view-metas-mes -->
+
+
+<!-- VIEW BANCO DE JOGOS -->
+<div class="person-view" id="view-banco-jogos">
+
+  <div style="display:flex;align-items:center;gap:16px;margin-bottom:24px;padding:20px 24px;background:linear-gradient(135deg,rgba(222,180,40,.04),rgba(35,77,103,.06));border-radius:16px;border-left:4px solid var(--z-gold)">
+    <div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--z-gold),var(--z-gold-light));display:flex;align-items:center;justify-content:center;font-size:22px;color:white;flex-shrink:0"><i class="bi bi-controller"></i></div>
+    <div>
+      <h2 style="font-size:22px;font-weight:800;color:var(--z-blue);margin:0;border:none;padding:0">Banco de Jogos</h2>
+      <p style="font-size:13px;color:rgba(35,77,103,.5);margin:2px 0 0">Catálogo de jogos de vendas — escolha os jogos de cada mês</p>
+    </div>
+  </div>
+
+  <div class="card" style="border-left:4px solid var(--z-gold);margin-bottom:16px;padding:14px 20px">
+    <p style="font-size:13px;margin:0"><strong>Como funciona:</strong> Amanda verifica o indicador fraco no Pulso do Dia e escolhe o jogo certo da lista abaixo. Orçamento: <strong>R$ 200/mês = R$ 50/semana.</strong></p>
+    <p style="font-size:11px;color:var(--z-gray-500);margin:4px 0 0"><strong>Regra de ouro:</strong> Prêmios de BAIXO valor. O que motiva é a disputa (felicidade + competição), não o prêmio.</p>
+  </div>
+
+  <!-- 7 ELEMENTOS -->
+  <h2 class="sec"><i class="bi bi-list-check" style="color:var(--z-gold)"></i> Os 7 Elementos de Todo Jogo</h2>
+  <div class="card" style="margin-bottom:20px">
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;text-align:center">
+      <div style="padding:10px;background:rgba(222,180,40,.04);border-radius:8px"><div style="font-size:18px;margin-bottom:4px">🎭</div><div style="font-size:11px;font-weight:700;color:var(--z-blue)">Avatar</div><div style="font-size:10px;color:var(--z-gray-400)">Cada Zelosa escolhe seu personagem</div></div>
+      <div style="padding:10px;background:rgba(35,77,103,.03);border-radius:8px"><div style="font-size:18px;margin-bottom:4px">📋</div><div style="font-size:11px;font-weight:700;color:var(--z-blue)">Regras</div><div style="font-size:10px;color:var(--z-gray-400)">Simples e claras</div></div>
+      <div style="padding:10px;background:rgba(222,180,40,.04);border-radius:8px"><div style="font-size:18px;margin-bottom:4px">🎁</div><div style="font-size:11px;font-weight:700;color:var(--z-blue)">Prêmios</div><div style="font-size:10px;color:var(--z-gray-400)">Baixo valor sempre</div></div>
+      <div style="padding:10px;background:rgba(35,77,103,.03);border-radius:8px"><div style="font-size:18px;margin-bottom:4px">📊</div><div style="font-size:11px;font-weight:700;color:var(--z-blue)">Indicadores</div><div style="font-size:10px;color:var(--z-gray-400)">Placar visível</div></div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;text-align:center;margin-top:8px">
+      <div style="padding:10px;background:rgba(35,77,103,.03);border-radius:8px"><div style="font-size:18px;margin-bottom:4px">🎯</div><div style="font-size:11px;font-weight:700;color:var(--z-blue)">Metas</div><div style="font-size:10px;color:var(--z-gray-400)">O que atingir e quando</div></div>
+      <div style="padding:10px;background:rgba(222,180,40,.04);border-radius:8px"><div style="font-size:18px;margin-bottom:4px">🎉</div><div style="font-size:11px;font-weight:700;color:var(--z-blue)">Comemoração</div><div style="font-size:10px;color:var(--z-gray-400)">Apito, palmas, cartaz</div></div>
+      <div style="padding:10px;background:rgba(35,77,103,.03);border-radius:8px"><div style="font-size:18px;margin-bottom:4px">🎨</div><div style="font-size:11px;font-weight:700;color:var(--z-blue)">Tema</div><div style="font-size:10px;color:var(--z-gray-400)">Nome, decoração, adesivos</div></div>
+    </div>
+  </div>
+
+  <!-- JOGOS -->
+  <h2 class="sec"><i class="bi bi-controller" style="color:var(--z-gold)"></i> Jogos Disponíveis</h2>
+
+  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:20px">
+
+    <!-- JOGO 1: VINTÃO -->
+    <div class="card" style="border-left:4px solid var(--z-gold);padding:18px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+        <div style="width:32px;height:32px;border-radius:50%;background:var(--z-gold);color:white;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800">01</div>
+        <div>
+          <h3 style="font-size:16px;font-weight:700;color:var(--z-blue);margin:0">Vintão</h3>
+          <span style="font-size:10px;padding:2px 8px;border-radius:10px;background:rgba(222,180,40,.1);color:var(--z-gold);font-weight:600">Ticket Médio</span>
+        </div>
+      </div>
+      <p style="font-size:12px;color:var(--z-blue);margin-bottom:8px"><strong>Objetivo:</strong> Maior venda do dia</p>
+      <p style="font-size:12px;color:var(--z-gray-500);margin-bottom:10px">A nota de R$ 20 vai para quem fizer a primeira venda do dia. Se alguém fizer uma venda <strong>maior</strong>, toma a nota. No fim do expediente, quem estiver com ela, leva pra casa.</p>
+      <details style="font-size:11px;color:var(--z-gray-500)">
+        <summary style="cursor:pointer;font-weight:600;color:var(--z-blue);margin-bottom:6px">Detalhes e adaptação</summary>
+        <p><strong>Mecânica:</strong> A nota circula de mão em mão o dia todo. Cada vez que muda: toca sino, Amanda anuncia. Cartaz na recepção interna.</p>
+        <p><strong>Adaptação Zêluz:</strong> Vale para vendas de Empório + Extras SPA. Banho padrão não conta.</p>
+        <p><strong>Limite:</strong> Máximo 3 dias seguidos. Não repetir toda semana.</p>
+      </details>
+      <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">
+        <span style="font-size:10px;padding:3px 8px;border-radius:8px;background:rgba(35,77,103,.05);color:var(--z-blue)"><i class="bi bi-clock"></i> 1 dia</span>
+        <span style="font-size:10px;padding:3px 8px;border-radius:8px;background:rgba(39,174,96,.06);color:#27AE60"><i class="bi bi-cash"></i> R$ 20</span>
+        <span style="font-size:10px;padding:3px 8px;border-radius:8px;background:rgba(35,77,103,.05);color:var(--z-gray-500)"><i class="bi bi-card-text"></i> Nota + cartaz + sino</span>
+      </div>
+    </div>
+
+    <!-- JOGO 2: BALEIA -->
+    <div class="card" style="border-left:4px solid var(--z-emporio);padding:18px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+        <div style="width:32px;height:32px;border-radius:50%;background:var(--z-emporio);color:white;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800">02</div>
+        <div>
+          <h3 style="font-size:16px;font-weight:700;color:var(--z-blue);margin:0">Jogo da Baleia</h3>
+          <span style="font-size:10px;padding:2px 8px;border-radius:10px;background:rgba(94,155,107,.1);color:var(--z-emporio);font-weight:600">Estoque Parado</span>
+        </div>
+      </div>
+      <p style="font-size:12px;color:var(--z-blue);margin-bottom:8px"><strong>Objetivo:</strong> Vender itens parados do Empório</p>
+      <p style="font-size:12px;color:var(--z-gray-500);margin-bottom:10px">Identifique os produtos de baixo giro — são as <strong>"baleias"</strong>. A cada baleia vendida, cola um adesivo no cartaz. Quem mais baleias "salvou", ganha.</p>
+      <details style="font-size:11px;color:var(--z-gray-500)">
+        <summary style="cursor:pointer;font-weight:600;color:var(--z-blue);margin-bottom:6px">Detalhes e adaptação</summary>
+        <p><strong>Mecânica:</strong> Cartaz com lista das baleias. Adesivo por venda. Quem tiver mais adesivos ao fechar, vence.</p>
+        <p><strong>Adaptação Zêluz:</strong> Joyce lista com Amanda os 10–15 itens parados do Empório. Cartaz no estoque (não visível ao tutor).</p>
+        <p><strong>Quando usar:</strong> Itens encalhados ou próximos ao vencimento.</p>
+      </details>
+      <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">
+        <span style="font-size:10px;padding:3px 8px;border-radius:8px;background:rgba(35,77,103,.05);color:var(--z-blue)"><i class="bi bi-clock"></i> 1 dia</span>
+        <span style="font-size:10px;padding:3px 8px;border-radius:8px;background:rgba(39,174,96,.06);color:#27AE60"><i class="bi bi-cash"></i> Coxinha + suco (R$ 15)</span>
+        <span style="font-size:10px;padding:3px 8px;border-radius:8px;background:rgba(35,77,103,.05);color:var(--z-gray-500)"><i class="bi bi-card-text"></i> Cartaz + adesivos</span>
+      </div>
+    </div>
+
+    <!-- JOGO 3: CORRIDA DE PONTOS -->
+    <div class="card" style="border-left:4px solid var(--z-blue);padding:18px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+        <div style="width:32px;height:32px;border-radius:50%;background:var(--z-blue);color:white;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800">03</div>
+        <div>
+          <h3 style="font-size:16px;font-weight:700;color:var(--z-blue);margin:0">Corrida de Pontos</h3>
+          <span style="font-size:10px;padding:2px 8px;border-radius:10px;background:rgba(222,180,40,.1);color:var(--z-gold);font-weight:600">Ticket Médio</span>
+        </div>
+      </div>
+      <p style="font-size:12px;color:var(--z-blue);margin-bottom:8px"><strong>Objetivo:</strong> Aumentar ticket médio sustentado</p>
+      <p style="font-size:12px;color:var(--z-gray-500);margin-bottom:10px">Placar com nome e foto. A cada venda, ganha pontos por faixa de valor. Mais pontos ao final da semana = vitória.</p>
+      <details style="font-size:11px;color:var(--z-gray-500)">
+        <summary style="cursor:pointer;font-weight:600;color:var(--z-blue);margin-bottom:6px">Detalhes e adaptação</summary>
+        <p><strong>Sistema de pontos:</strong> R$ 25–50 = 10 pts | R$ 51–100 = 25 pts | R$ 101–250 = 50 pts | Acima de R$ 250 = 100 pts</p>
+        <p><strong>Adaptação Zêluz:</strong> Quadro no estoque com foto do prêmio. Empório + upsell extras SPA.</p>
+        <p><strong>Quando usar:</strong> Ticket médio caindo ou estagnado.</p>
+      </details>
+      <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">
+        <span style="font-size:10px;padding:3px 8px;border-radius:8px;background:rgba(35,77,103,.05);color:var(--z-blue)"><i class="bi bi-clock"></i> 1 semana</span>
+        <span style="font-size:10px;padding:3px 8px;border-radius:8px;background:rgba(39,174,96,.06);color:#27AE60"><i class="bi bi-cash"></i> 1º: almoço · 2º: chocolate (R$ 35)</span>
+        <span style="font-size:10px;padding:3px 8px;border-radius:8px;background:rgba(35,77,103,.05);color:var(--z-gray-500)"><i class="bi bi-card-text"></i> Placar + fotos</span>
+      </div>
+    </div>
+
+    <!-- JOGO 4: VARAL -->
+    <div class="card" style="border-left:4px solid #C0392B;padding:18px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+        <div style="width:32px;height:32px;border-radius:50%;background:#C0392B;color:white;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800">04</div>
+        <div>
+          <h3 style="font-size:16px;font-weight:700;color:var(--z-blue);margin:0">Varal de Envelopes</h3>
+          <span style="font-size:10px;padding:2px 8px;border-radius:10px;background:rgba(192,57,43,.08);color:#C0392B;font-weight:600">Push Final</span>
+        </div>
+      </div>
+      <p style="font-size:12px;color:var(--z-blue);margin-bottom:8px"><strong>Objetivo:</strong> Push final — dias e etapas fracas</p>
+      <p style="font-size:12px;color:var(--z-gray-500);margin-bottom:10px">Envelopes presos num varal. Venda acima do valor estipulado = pega um envelope. Alguns têm prêmios, outros não. Sorte + esforço.</p>
+      <details style="font-size:11px;color:var(--z-gray-500)">
+        <summary style="cursor:pointer;font-weight:600;color:var(--z-blue);margin-bottom:6px">Detalhes e adaptação</summary>
+        <p><strong>Mecânica:</strong> Pelo menos 30% dos envelopes com prêmios. Varal interno. 1 envelope por venda qualificada.</p>
+        <p><strong>Adaptação Zêluz:</strong> Usar na etapa final (27–30) para urgência. Venda acima de R$ 80 no Empório ou extra SPA acima de R$ 50.</p>
+        <p><strong>Quando usar:</strong> Push final do mês, dias de baixo movimento.</p>
+      </details>
+      <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">
+        <span style="font-size:10px;padding:3px 8px;border-radius:8px;background:rgba(35,77,103,.05);color:var(--z-blue)"><i class="bi bi-clock"></i> 1 dia ou push final</span>
+        <span style="font-size:10px;padding:3px 8px;border-radius:8px;background:rgba(39,174,96,.06);color:#27AE60"><i class="bi bi-cash"></i> Mix chocolates (R$ 30)</span>
+        <span style="font-size:10px;padding:3px 8px;border-radius:8px;background:rgba(35,77,103,.05);color:var(--z-gray-500)"><i class="bi bi-card-text"></i> Varal + envelopes</span>
+      </div>
+    </div>
+
+    <!-- JOGO 5: DESAFIO BOB'S -->
+    <div class="card" style="border-left:4px solid #D4850A;padding:18px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+        <div style="width:32px;height:32px;border-radius:50%;background:#D4850A;color:white;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800">05</div>
+        <div>
+          <h3 style="font-size:16px;font-weight:700;color:var(--z-blue);margin:0">Desafio Bob’s</h3>
+          <span style="font-size:10px;padding:2px 8px;border-radius:10px;background:rgba(212,133,10,.08);color:#D4850A;font-weight:600">Meta Diária</span>
+        </div>
+      </div>
+      <p style="font-size:12px;color:var(--z-blue);margin-bottom:8px"><strong>Objetivo:</strong> Bater a meta diária coletiva</p>
+      <p style="font-size:12px;color:var(--z-gray-500);margin-bottom:10px">Equipe decide a meta diária em grupo. Se bater, <strong>todas</strong> ganham o prêmio. O grupo pressiona o grupo — Amanda não precisa pressionar sozinha.</p>
+      <details style="font-size:11px;color:var(--z-gray-500)">
+        <summary style="cursor:pointer;font-weight:600;color:var(--z-blue);margin-bottom:6px">Detalhes e adaptação</summary>
+        <p><strong>Mecânica:</strong> Meta combinada antes de abrir. Placar visível o dia todo. Faltando 2h, Amanda anuncia quanto falta.</p>
+        <p><strong>Adaptação Zêluz:</strong> Meta do dia = meta da etapa ÷ dias úteis. Pode ser em R$ ou número de extras.</p>
+        <p><strong>Quando usar:</strong> Semanas cheias (E2, E3) para manter ritmo constante.</p>
+      </details>
+      <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">
+        <span style="font-size:10px;padding:3px 8px;border-radius:8px;background:rgba(35,77,103,.05);color:var(--z-blue)"><i class="bi bi-clock"></i> 1 dia</span>
+        <span style="font-size:10px;padding:3px 8px;border-radius:8px;background:rgba(39,174,96,.06);color:#27AE60"><i class="bi bi-cash"></i> Sanduíche Bob’s (R$ 25)</span>
+        <span style="font-size:10px;padding:3px 8px;border-radius:8px;background:rgba(35,77,103,.05);color:var(--z-gray-500)"><i class="bi bi-card-text"></i> Placar diário</span>
+      </div>
+    </div>
+
+    <!-- JOGO 6: ESTOURE BALÕES -->
+    <div class="card" style="border-left:4px solid var(--z-spa);padding:18px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+        <div style="width:32px;height:32px;border-radius:50%;background:var(--z-spa);color:white;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800">06</div>
+        <div>
+          <h3 style="font-size:16px;font-weight:700;color:var(--z-blue);margin:0">Estoure Balões</h3>
+          <span style="font-size:10px;padding:2px 8px;border-radius:10px;background:rgba(184,169,201,.15);color:var(--z-spa);font-weight:600">Taxa de Upsell</span>
+        </div>
+      </div>
+      <p style="font-size:12px;color:var(--z-blue);margin-bottom:8px"><strong>Objetivo:</strong> Aumentar upsell de extras SPA</p>
+      <p style="font-size:12px;color:var(--z-gray-500);margin-bottom:10px">Balões no teto com papéis dentro (prêmios). Cada extra SPA vendido acima da meta do dia = 1 balão para estourar.</p>
+      <details style="font-size:11px;color:var(--z-gray-500)">
+        <summary style="cursor:pointer;font-weight:600;color:var(--z-blue);margin-bottom:6px">Detalhes e adaptação</summary>
+        <p><strong>Mecânica:</strong> Meta diária de extras (ex: 15/dia). Cada extra ACIMA = 1 balão. O tutor ouve o estouro e cria energia.</p>
+        <p><strong>Adaptação Zêluz:</strong> Extras que contam: Hidratação, Nuvem de Algodão, Ouro Therapy, Soin Fundamental, Primitif.</p>
+        <p><strong>Quando usar:</strong> Taxa de upsell (extras por banho) abaixo de 60%.</p>
+      </details>
+      <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">
+        <span style="font-size:10px;padding:3px 8px;border-radius:8px;background:rgba(35,77,103,.05);color:var(--z-blue)"><i class="bi bi-clock"></i> 1 fim de semana</span>
+        <span style="font-size:10px;padding:3px 8px;border-radius:8px;background:rgba(39,174,96,.06);color:#27AE60"><i class="bi bi-cash"></i> Casquinha + bombom (R$ 15–20)</span>
+        <span style="font-size:10px;padding:3px 8px;border-radius:8px;background:rgba(35,77,103,.05);color:var(--z-gray-500)"><i class="bi bi-card-text"></i> Balões + papéis</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- DIAGNÓSTICO -->
+  <h2 class="sec"><i class="bi bi-signpost-split" style="color:var(--z-gold)"></i> Diagnóstico: Qual Jogo Usar?</h2>
+  <div class="card" style="margin-bottom:20px">
+    <p style="font-size:12px;color:var(--z-gray-500);margin-bottom:12px">Amanda verifica o indicador fraco no Pulso do Dia e escolhe o jogo certo.</p>
+    <table style="font-size:12px">
+      <tr><th style="text-align:left">O indicador está fraco?</th><th>Jogo indicado</th><th>Onde aplicar</th></tr>
+      <tr><td>Ticket médio caindo</td><td><strong>Vintão</strong> (1 dia) ou <strong>Corrida de Pontos</strong> (1 semana)</td><td>Empório + SPA</td></tr>
+      <tr><td>Estoque parado / itens encalhados</td><td><strong>Baleia</strong></td><td>Empório</td></tr>
+      <tr><td>Meta diária sem ritmo</td><td><strong>Desafio Bob’s</strong></td><td>Todas as Zelosas</td></tr>
+      <tr><td>Upsell de extras baixo</td><td><strong>Estoure Balões</strong></td><td>SPA (Fernanda)</td></tr>
+      <tr><td>Push final / dias fracos</td><td><strong>Varal de Envelopes</strong></td><td>Todas as Zelosas</td></tr>
+    </table>
+  </div>
+
+  <!-- REGRAS -->
+  <h2 class="sec"><i class="bi bi-exclamation-triangle" style="color:var(--z-gold)"></i> Regras de Premiação dos Jogos</h2>
+  <div class="card">
+    <ul style="list-style:none;padding:0;margin:0;font-size:12px">
+      <li style="padding:8px 0;border-bottom:1px solid rgba(35,77,103,.06);display:flex;gap:8px"><i class="bi bi-check-circle-fill" style="color:var(--z-gold);flex-shrink:0"></i> <span>Prêmios dos jogos são <strong>separados</strong> do sistema de premiação por metas (pool 3%)</span></li>
+      <li style="padding:8px 0;border-bottom:1px solid rgba(35,77,103,.06);display:flex;gap:8px"><i class="bi bi-check-circle-fill" style="color:var(--z-gold);flex-shrink:0"></i> <span>Orçamento: <strong>R$ 200/mês = R$ 50/semana</strong></span></li>
+      <li style="padding:8px 0;border-bottom:1px solid rgba(35,77,103,.06);display:flex;gap:8px"><i class="bi bi-check-circle-fill" style="color:var(--z-gold);flex-shrink:0"></i> <span>Prêmios SEMPRE de baixo valor: lanche, chocolate, casquinha. <strong>"O que motiva é a disputa, não o prêmio"</strong></span></li>
+      <li style="padding:8px 0;border-bottom:1px solid rgba(35,77,103,.06);display:flex;gap:8px"><i class="bi bi-check-circle-fill" style="color:var(--z-gold);flex-shrink:0"></i> <span>Máximo 2 jogos simultâneos (1 diário + 1 semanal)</span></li>
+      <li style="padding:8px 0;border-bottom:1px solid rgba(35,77,103,.06);display:flex;gap:8px"><i class="bi bi-check-circle-fill" style="color:var(--z-gold);flex-shrink:0"></i> <span>Comemorar SEMPRE: apito, palmas, anúncio. Sem comemoração, o jogo morre</span></li>
+      <li style="padding:8px 0;border-bottom:1px solid rgba(35,77,103,.06);display:flex;gap:8px"><i class="bi bi-check-circle-fill" style="color:var(--z-gold);flex-shrink:0"></i> <span>Vintão: máximo 3 dias consecutivos, depois trocar</span></li>
+      <li style="padding:8px 0;display:flex;gap:8px"><i class="bi bi-check-circle-fill" style="color:var(--z-gold);flex-shrink:0"></i> <span><strong>Retorno estimado:</strong> cada R$ 1 em prêmio gera R$ 50+ em venda incremental</span></li>
+    </ul>
+  </div>
+
+</div><!-- fim view-banco-jogos -->
 
 <!-- ===== VIEW AMANDA ===== -->
 <div class="person-view active" id="view-amanda">
@@ -2546,7 +2762,8 @@ var _viewTitles = {
   'vetcare':  'VetCare',
   'guia-pratico': 'Guia Prático Ágora',
   'estrategias-jogos': 'Estratégias & Jogos',
-  'metas-mes': 'Metas do Mês'
+  'metas-mes': 'Metas do Mês',
+  'banco-jogos': 'Banco de Jogos'
 };
 
 function toggleSubnav(id){
