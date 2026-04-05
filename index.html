@@ -825,6 +825,57 @@ tr.tot td { font-weight: 700; background: rgba(222,180,40,.06); border-top: 2px 
   .main-header h1 { font-size: 13px; }
   .kanban-board { grid-template-columns: repeat(5, 180px); }
 }
+
+/* --- RITUAIS (Guia Prático) --- */
+.ritual-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  margin: 0 -24px;
+  margin-top: -4px;
+  margin-bottom: 16px;
+}
+.ritual-header.seg { background: rgba(35,77,103,.08); }
+.ritual-header.terqui { background: rgba(94,155,107,.08); }
+.ritual-header.qua { background: rgba(184,169,201,.12); }
+.ritual-header.sex { background: rgba(222,180,40,.08); }
+.ritual-header.sab { background: rgba(46,125,138,.08); }
+.ritual-header .ritual-icon {
+  width: 44px; height: 44px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; flex-shrink: 0;
+}
+.ritual-header.seg .ritual-icon { background: var(--z-blue); color: var(--z-cream); }
+.ritual-header.terqui .ritual-icon { background: var(--z-emporio); color: white; }
+.ritual-header.qua .ritual-icon { background: var(--z-spa); color: white; }
+.ritual-header.sex .ritual-icon { background: var(--z-gold); color: white; }
+.ritual-header.sab .ritual-icon { background: var(--z-vetcare); color: white; }
+.ritual-header .ritual-info { flex: 1; }
+.ritual-header .ritual-nome { font-size: 16px; font-weight: 800; color: var(--z-blue); }
+.ritual-header .ritual-meta { font-size: 12px; color: var(--z-gray-500); display: flex; gap: 12px; margin-top: 2px; }
+.ritual-header .ritual-meta span { display: flex; align-items: center; gap: 4px; }
+.roteiro-box {
+  background: rgba(35,77,103,.03); border: 1px solid rgba(35,77,103,.10);
+  border-radius: var(--radius-md); padding: 16px 20px; margin: 12px 0;
+}
+.roteiro-box h4 {
+  font-size: 13px; font-weight: 700; color: var(--z-blue);
+  margin-bottom: 8px; display: flex; align-items: center; gap: 6px;
+}
+.roteiro-box h4 i { color: var(--z-gold); }
+.roteiro-box ol, .roteiro-box ul { padding-left: 20px; font-size: 13px; }
+.roteiro-box ol li, .roteiro-box ul li { margin-bottom: 4px; }
+.roteiro-box .pergunta {
+  background: rgba(222,180,40,.08); border-left: 3px solid var(--z-gold);
+  border-radius: 0 6px 6px 0; padding: 10px 14px; margin: 10px 0; font-size: 13px;
+}
+.roteiro-box .pergunta strong {
+  display: block; font-size: 11px; text-transform: uppercase;
+  letter-spacing: 0.5px; color: var(--z-gold); margin-bottom: 6px;
+}
+
 </style>
 </head>
 <body>
@@ -862,7 +913,10 @@ tr.tot td { font-weight: 700; background: rgba(222,180,40,.06); border-top: 2px 
 
     <div class="nav-section-label">Gestão</div>
     <a class="nav-item" id="nav-adriana" onclick="switchView('adriana')"><i class="bi bi-person-badge"></i> Adriana</a>
-    <a class="nav-item active" id="nav-amanda" onclick="switchView('amanda')"><i class="bi bi-person-workspace"></i> Amanda</a>
+    <a class="nav-item active" id="nav-amanda" onclick="toggleSubnav('amanda-sub');switchView('amanda')"><i class="bi bi-person-workspace"></i> Amanda <i class="bi bi-chevron-down" style="font-size:10px;margin-left:auto;opacity:.4"></i></a>
+    <div class="subnav" id="amanda-sub" style="display:none">
+      <a class="nav-item nav-sub" id="nav-guia-pratico" onclick="switchView('guia-pratico')"><i class="bi bi-book" style="font-size:14px"></i> Guia Prático</a>
+    </div>
     <a class="nav-item" id="nav-marcia" onclick="switchView('marcia')"><i class="bi bi-person-hearts"></i> Márcia</a>
 
     <div class="nav-section-label">Setores</div>
@@ -1403,6 +1457,286 @@ tr.tot td { font-weight: 700; background: rgba(222,180,40,.06); border-top: 2px 
 
 </div><!-- fim view-amanda -->
 
+
+<!-- VIEW GUIA PRÁTICO ÁGORA -->
+<div class="person-view" id="view-guia-pratico">
+
+  <div style="display:flex;align-items:center;gap:16px;margin-bottom:24px;padding:20px 24px;background:linear-gradient(135deg,rgba(35,77,103,.06),rgba(222,180,40,.04));border-radius:16px;border-left:4px solid var(--z-gold)">
+    <div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--z-gold),var(--z-gold-light));display:flex;align-items:center;justify-content:center;font-size:22px;color:white;flex-shrink:0"><i class="bi bi-book"></i></div>
+    <div>
+      <h2 style="font-size:22px;font-weight:800;color:var(--z-blue);margin:0;border:none;padding:0">Guia Prático Ágora</h2>
+      <p style="font-size:13px;color:rgba(35,77,103,.5);margin:2px 0 0">Manual de operação da Supervisora</p>
+    </div>
+  </div>
+
+  <h2 class="sec"><i class="bi bi-book" style="color:var(--z-gold)"></i> Como Usar Este Material</h2>
+
+  <div class="card" style="border-left:4px solid var(--z-gold);background:rgba(222,180,40,.03)">
+    <strong>Amanda, este guia é o seu manual de operação.</strong> Não é teoria — é roteiro. Cada ritual tem o dia, a duração, o passo a passo e as perguntas exatas para fazer.<br><br>
+    Você não precisa improvisar. Só seguir e rodar o <strong>PDCA</strong>.
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:16px">
+      <div style="background:rgba(35,77,103,.05);border:1.5px solid rgba(35,77,103,.15);border-radius:var(--radius-md);padding:16px 12px;text-align:center">
+        <div style="font-size:26px;font-weight:900;color:var(--z-blue);margin-bottom:4px">P</div>
+        <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--z-blue)">Plan</div>
+        <div style="font-size:13px;color:var(--z-gray-500);margin-top:6px;line-height:1.4">Planejar — definir metas e regras</div>
+        <div style="font-size:10px;margin-top:8px;background:rgba(39,174,96,.10);color:var(--z-green);border-radius:6px;padding:4px 10px;font-weight:600;display:inline-block">✅ Feito</div>
+      </div>
+      <div style="background:rgba(222,180,40,.05);border:1.5px solid rgba(222,180,40,.20);border-radius:var(--radius-md);padding:16px 12px;text-align:center">
+        <div style="font-size:26px;font-weight:900;color:var(--z-gold);margin-bottom:4px">D</div>
+        <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--z-gold)">Do</div>
+        <div style="font-size:13px;color:var(--z-gray-500);margin-top:6px;line-height:1.4">Executar — colocar em prática</div>
+      </div>
+      <div style="background:rgba(184,169,201,.08);border:1.5px solid rgba(184,169,201,.25);border-radius:var(--radius-md);padding:16px 12px;text-align:center">
+        <div style="font-size:26px;font-weight:900;color:var(--z-spa);margin-bottom:4px">C</div>
+        <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--z-spa-dark)">Check</div>
+        <div style="font-size:13px;color:var(--z-gray-500);margin-top:6px;line-height:1.4">Checar — medir os resultados</div>
+      </div>
+      <div style="background:rgba(94,155,107,.06);border:1.5px solid rgba(94,155,107,.20);border-radius:var(--radius-md);padding:16px 12px;text-align:center">
+        <div style="font-size:26px;font-weight:900;color:var(--z-emporio);margin-bottom:4px">A</div>
+        <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--z-emporio-dark)">Act</div>
+        <div style="font-size:13px;color:var(--z-gray-500);margin-top:6px;line-height:1.4">Agir — corrigir, ajustar e melhorar</div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:8px;margin-top:14px">
+      <div style="display:flex;align-items:flex-start;gap:10px;padding:10px 14px;background:rgba(35,77,103,.03);border-radius:var(--radius-md);border-left:3px solid var(--z-blue)">
+        <span style="font-size:18px">📄</span>
+        <div><strong style="font-size:13px;color:var(--z-blue)">Documentar</strong> <span style="font-size:13px;color:var(--z-gray-500)">→ registrar a correção e atualizar o documento oficial.</span><br><span style="font-size:12px;color:var(--z-gray-400);font-style:italic">O que não está escrito, simplesmente não existe.</span></div>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:10px;padding:10px 14px;background:rgba(222,180,40,.04);border-radius:var(--radius-md);border-left:3px solid var(--z-gold)">
+        <span style="font-size:18px">↩️</span>
+        <div><strong style="font-size:13px;color:var(--z-blue)">Recomeça</strong> <span style="font-size:13px;color:var(--z-gray-500)">→ o próximo ciclo já começa com o processo melhorado.</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RITUAL 1: ROTA ZELOSA -->
+  <div class="card">
+    <div class="ritual-header seg">
+      <div class="ritual-icon"><i class="bi bi-map"></i></div>
+      <div class="ritual-info">
+        <div class="ritual-nome">Rota Zelosa</div>
+        <div class="ritual-meta">
+          <span><i class="bi bi-calendar3"></i> Toda segunda-feira</span>
+          <span><i class="bi bi-clock"></i> 15 minutos</span>
+          <span><i class="bi bi-people"></i> Toda a equipe reunida</span>
+        </div>
+      </div>
+    </div>
+    <p style="font-size:13px;margin-bottom:12px"><strong>O que fazer:</strong> Amanda reúne a equipe e faz exatamente 3 coisas.</p>
+    <div class="roteiro-box">
+      <h4><i class="bi bi-list-ol"></i> Passo a passo</h4>
+      <ol>
+        <li><strong>Mostrar a meta da etapa:</strong> "Meninas, essa semana nossa meta Cuidado é R$ X no Empório e R$ Y no SPA. Meta Zêlo é R$ Z."</li>
+        <li><strong>Apresentar o foco da semana:</strong> Qual produto ou serviço vai ter atenção especial? (ex.: "Vamos empurrar o Soin Fundamental essa semana")</li>
+        <li><strong>Anunciar o jogo da semana:</strong> Qual jogo vai rolar, as regras em 2 frases e o prêmio.</li>
+      </ol>
+    </div>
+    <div class="roteiro-box">
+      <h4><i class="bi bi-chat-quote"></i> Perguntas para fazer</h4>
+      <div class="pergunta">
+        <strong>Amanda pergunta para a equipe:</strong>
+        "Quanto vendemos na etapa passada?" · "Qual a nossa meta nessa etapa?" · "Qual produto vamos dar foco essa semana?" · "Quem vai participar do jogo?"
+      </div>
+    </div>
+    <p style="font-size:12px;color:var(--z-gray-500);margin-top:8px">
+      <i class="bi bi-lightbulb"></i> Dica: A Rota Zelosa define o tom da semana. Se começar com energia, a semana tem energia.
+    </p>
+  </div>
+
+  <!-- RITUAL 2: PULSO DO DIA -->
+  <div class="card">
+    <div class="ritual-header terqui">
+      <div class="ritual-icon"><i class="bi bi-bar-chart-line"></i></div>
+      <div class="ritual-info">
+        <div class="ritual-nome">Pulso do Dia</div>
+        <div class="ritual-meta">
+          <span><i class="bi bi-calendar3"></i> Terça e quinta</span>
+          <span><i class="bi bi-clock"></i> 10 minutos</span>
+          <span><i class="bi bi-person-check"></i> Amanda com cada Zelosa</span>
+        </div>
+      </div>
+    </div>
+    <p style="font-size:13px;margin-bottom:12px"><strong>O que fazer:</strong> Amanda senta (ou para de pé, rápido) com cada Zelosa individualmente e levanta 6 números do dia anterior.</p>
+    <div class="roteiro-box">
+      <h4><i class="bi bi-list-ol"></i> O que preencher para cada Zelosa</h4>
+      <ol>
+        <li>Quantas vendas fez ontem?</li>
+        <li>Quantos atendimentos teve? (= oportunidades)</li>
+        <li>Quanto vendeu em R$ total?</li>
+        <li><strong>Taxa de aproveitamento:</strong> vendas ÷ atendimentos × 100 = X%</li>
+        <li><strong>Ticket médio:</strong> valor total ÷ vendas = R$ X</li>
+        <li><strong>Desperdício:</strong> (atendimentos - vendas) × ticket médio = R$ X que "escapou"</li>
+      </ol>
+    </div>
+    <div class="roteiro-box">
+      <h4><i class="bi bi-chat-quote"></i> Roteiro de perguntas</h4>
+      <div class="pergunta">
+        <strong>Amanda fala assim:</strong>
+        "Fernanda, quantos extras você vendeu ontem?" · "Quantos banhos passaram por você?" · "Então sua taxa de upsell foi X%. Como podemos melhorar isso hoje?"
+      </div>
+      <div class="pergunta">
+        <strong>Para Joyce (Empório):</strong>
+        "Joyce, quantos tutores passaram no Empório ontem?" · "Quantos você converteu?" · "Qual foi o maior ticket?"
+      </div>
+    </div>
+    <p style="font-size:12px;color:var(--z-gray-500);margin-top:8px">
+      <i class="bi bi-lightbulb"></i> Dica: O Desperdício é o número mais importante. Mostra em R$ o quanto saiu pela porta sem comprar.
+    </p>
+  </div>
+
+  <!-- RITUAL 3: FEEDBACK ZELOSO -->
+  <div class="card">
+    <div class="ritual-header qua">
+      <div class="ritual-icon"><i class="bi bi-person-hearts"></i></div>
+      <div class="ritual-info">
+        <div class="ritual-nome">Feedback Zeloso</div>
+        <div class="ritual-meta">
+          <span><i class="bi bi-calendar3"></i> Toda quarta-feira</span>
+          <span><i class="bi bi-clock"></i> 30 minutos (7-10 min por Zelosa)</span>
+          <span><i class="bi bi-person-check"></i> Individual — não é reunião de grupo</span>
+        </div>
+      </div>
+    </div>
+    <p style="font-size:13px;margin-bottom:12px"><strong>O que fazer:</strong> Amanda senta com CADA Zelosa individualmente. 3 etapas em sequência — não pular nenhuma.</p>
+    <div class="roteiro-box">
+      <h4><i class="bi bi-1-circle-fill"></i> Etapa 1 — AMPLIAR</h4>
+      <p style="font-size:13px">Perguntar como ela está se sentindo com os próprios resultados. Escutar. Não interromper.</p>
+      <div class="pergunta">
+        <strong>Amanda pergunta:</strong>
+        "Como você está se sentindo com seus resultados essa semana?" · "O que você acha que está indo bem?" · "O que está difícil pra você agora?"
+      </div>
+    </div>
+    <div class="roteiro-box">
+      <h4><i class="bi bi-2-circle-fill"></i> Etapa 2 — DIAGNOSTICAR</h4>
+      <p style="font-size:13px">Olhar os 3 indicadores dela. Qual está fraco?</p>
+      <ul style="font-size:13px;padding-left:20px;margin:8px 0">
+        <li>Taxa de aproveitamento abaixo de 60%? O problema é abordagem.</li>
+        <li>Ticket médio baixo? O problema é sugestão de produto.</li>
+        <li>Poucas vendas mesmo com fluxo? O problema é conversão.</li>
+      </ul>
+    </div>
+    <div class="roteiro-box">
+      <h4><i class="bi bi-3-circle-fill"></i> Etapa 3 — SOLUÇÃO</h4>
+      <p style="font-size:13px"><strong>A solução vem DELA, não de Amanda.</strong> Amanda faz a pergunta e espera.</p>
+      <div class="pergunta">
+        <strong>Perguntas obrigatórias:</strong>
+        "Se você não bater a meta, quanto deixa de ganhar em R$ esse mês?" · "O que depende de VOCÊ para melhorar isso?" · "Me dá UMA coisa que você vai fazer diferente amanhã."
+      </div>
+      <p style="font-size:12px;color:var(--z-gray-500);margin-top:8px">Terminar com: 1 ação definida + 1 metinha para a próxima quarta.</p>
+    </div>
+    <p style="font-size:12px;color:var(--z-gray-500);margin-top:8px">
+      <i class="bi bi-exclamation-triangle"></i> Atenção: Nunca fazer o Feedback Zeloso em grupo. O que a Fernanda precisa ouvir é diferente do que a Joyce precisa.
+    </p>
+  </div>
+
+  <!-- RITUAL 4: BALANÇO ZELOSO -->
+  <div class="card">
+    <div class="ritual-header sex">
+      <div class="ritual-icon"><i class="bi bi-clipboard-check"></i></div>
+      <div class="ritual-info">
+        <div class="ritual-nome">Balanço Zeloso</div>
+        <div class="ritual-meta">
+          <span><i class="bi bi-calendar3"></i> Toda sexta-feira</span>
+          <span><i class="bi bi-clock"></i> 20 minutos</span>
+          <span><i class="bi bi-people"></i> Amanda fecha a semana com a equipe</span>
+        </div>
+      </div>
+    </div>
+    <p style="font-size:13px;margin-bottom:12px"><strong>O que fazer:</strong> Amanda fecha os números da semana e prepara o sábado (último dia da etapa).</p>
+    <div class="roteiro-box">
+      <h4><i class="bi bi-list-ol"></i> Passo a passo</h4>
+      <ol>
+        <li>Quanto cada uma vendeu vs. a meta da etapa? (mostrar o número)</li>
+        <li>Quanto falta para fechar a etapa?</li>
+        <li>Qual o plano para o sábado? (quem vai focar em quê?)</li>
+        <li>Atualizar o quadro de Poupança da Zelosa (quanto cada uma acumulou no pool)</li>
+      </ol>
+    </div>
+    <div class="roteiro-box">
+      <h4><i class="bi bi-chat-quote"></i> Roteiro de fala</h4>
+      <div class="pergunta">
+        <strong>Amanda fala:</strong>
+        "Meninas, nossa meta Cuidado nessa etapa é R$ X. Até hoje conseguimos R$ Y. Falta R$ Z para amanhã (sábado)." · "Fernanda, amanhã o foco é extras. Joyce, foca nos tutores que vierem dentro de loja no sábado, brinquedos e produtos de cuidado oral (roedores, veggident e etc). Vamos fechar a etapa."
+      </div>
+    </div>
+    <p style="font-size:12px;color:var(--z-gray-500);margin-top:8px">
+      <i class="bi bi-lightbulb"></i> O Balanço cria urgência para o sábado. É o sprint final da semana.
+    </p>
+  </div>
+
+  <!-- RITUAL 5: ENCERRAR O JOGO -->
+  <div class="card">
+    <div class="ritual-header sab">
+      <div class="ritual-icon"><i class="bi bi-trophy"></i></div>
+      <div class="ritual-info">
+        <div class="ritual-nome">Encerrar o Jogo</div>
+        <div class="ritual-meta">
+          <span><i class="bi bi-calendar3"></i> Todo sábado</span>
+          <span><i class="bi bi-clock"></i> 10 minutos</span>
+          <span><i class="bi bi-people"></i> Toda a equipe + comemoração obrigatória</span>
+        </div>
+      </div>
+    </div>
+    <p style="font-size:13px;margin-bottom:12px"><strong>O que fazer:</strong> Fechar o jogo da semana. Anunciar o próximo.</p>
+    <div class="roteiro-box">
+      <h4><i class="bi bi-list-ol"></i> Passo a passo</h4>
+      <ol>
+        <li>Apurar quem venceu o jogo da semana</li>
+        <li><strong>COMEMORAR:</strong> apito, palmas, anúncio em voz alta — sem pular essa parte</li>
+        <li>Entregar o prêmio na mão da vencedora, na frente de todas</li>
+        <li>Amanda anuncia: "Na próxima semana nosso jogo é [nome]! Regras são: [2 frases]"</li>
+      </ol>
+    </div>
+    <p style="font-size:12px;color:var(--z-gray-500);margin-top:8px">
+      <i class="bi bi-exclamation-triangle"></i> Sem comemoração, o jogo perde o efeito. A energia do prêmio vem do reconhecimento público, não do valor.
+    </p>
+  </div>
+
+  <!-- RESUMO DOS RITUAIS -->
+  <div class="card">
+    <h3 style="font-size:15px;font-weight:700;color:var(--z-blue);margin:0 0 12px"><i class="bi bi-calendar-week" style="color:var(--z-gold);margin-right:6px"></i> Resumo da Semana — O que a Supervisora faz</h3>
+    <table>
+      <tr>
+        <th style="text-align:left">Ritual</th>
+        <th>Dia</th>
+        <th>Tempo</th>
+        <th>Com quem</th>
+      </tr>
+      <tr>
+        <td><strong>Rota Zelosa</strong></td>
+        <td>Segunda</td>
+        <td>15 min</td>
+        <td>Toda a equipe</td>
+      </tr>
+      <tr>
+        <td><strong>Pulso do Dia</strong></td>
+        <td>Terça e quinta</td>
+        <td>10 min</td>
+        <td>Cada Zelosa (individual)</td>
+      </tr>
+      <tr>
+        <td><strong>Feedback Zeloso</strong></td>
+        <td>Quarta</td>
+        <td>30 min</td>
+        <td>Cada Zelosa (individual)</td>
+      </tr>
+      <tr>
+        <td><strong>Balanço Zeloso</strong></td>
+        <td>Sexta</td>
+        <td>20 min</td>
+        <td>Toda a equipe</td>
+      </tr>
+      <tr style="font-weight:700;background:rgba(222,180,40,.06);border-top:2px solid var(--z-gold)">
+        <td><strong>Encerrar o Jogo</strong></td>
+        <td>Sábado</td>
+        <td>10 min</td>
+        <td>Toda a equipe + prêmio</td>
+      </tr>
+    </table>
+  </div>
+
+</div><!-- fim view-guia-pratico -->
+
 <!-- VIEW ADRIANA -->
 <div class="person-view" id="view-adriana">
 
@@ -1923,7 +2257,8 @@ var _viewTitles = {
   'suellen':  'Suellen — VetCare',
   'emporio':  'Empório',
   'spa':      'SPA Dermoprotetor',
-  'vetcare':  'VetCare'
+  'vetcare':  'VetCare',
+  'guia-pratico': 'Guia Prático Ágora'
 };
 
 function toggleSubnav(id){
