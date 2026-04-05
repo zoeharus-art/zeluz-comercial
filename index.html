@@ -1322,28 +1322,34 @@ tr.tot td { font-weight: 700; background: rgba(222,180,40,.06); border-top: 2px 
 <h2 class="sec"><i class="bi bi-controller"></i> Jogos de Vendas — Abril</h2>
 <div class="nota" style="margin-bottom:10px"><strong>Orçamento:</strong> R$ 200/mês = R$ 50/semana</div>
 
-<div class="jogo">
-  <h3><span contenteditable="true" style="outline:none">Semana 1 (01-05/abr) — VINTÃO</span><span style="font-size:12px;opacity:.3;margin-left:6px">✎</span></h3>
-  <div class="como"><span contenteditable="true" style="outline:none">Nota de R$ 20 circula. Quem fizer a maior venda do dia, fica com a nota. Se alguém superar, a nota muda de mão. Sábado: quem tiver, ganha.</span></div>
-  <div class="premio-lbl"><span contenteditable="true" style="outline:none">R$ 20</span></div>
-</div>
-<div class="jogo">
-  <h3><span contenteditable="true" style="outline:none">Semana 2 (06-12/abr) — DESAFIO BOB'S</span><span style="font-size:12px;opacity:.3;margin-left:6px">✎</span></h3>
-  <div class="como"><span contenteditable="true" style="outline:none">Quem bater a meta diária (Fernanda: X extras | Joyce: R$ X no Empório) ganha sanduíche do Bob's. Simples: bateu = ganhou.</span></div>
-  <div class="premio-lbl"><span contenteditable="true" style="outline:none">Sanduíche Bob's (até R$ 25)</span></div>
-</div>
-<div class="jogo">
-  <h3><span contenteditable="true" style="outline:none">Semana 3 (13-19/abr) — Clique para definir</span><span style="font-size:12px;opacity:.3;margin-left:6px">✎</span></h3>
-  <div class="como"><span contenteditable="true" style="outline:none">Clique para descrever o jogo da semana...</span></div>
-  <div class="premio-lbl"><span contenteditable="true" style="outline:none">Até R$ 25</span></div>
-</div>
-<div class="jogo">
-  <h3><span contenteditable="true" style="outline:none">Semana 4 (20-30/abr) — Clique para definir</span><span style="font-size:12px;opacity:.3;margin-left:6px">✎</span></h3>
-  <div class="como"><span contenteditable="true" style="outline:none">Clique para descrever o jogo da semana...</span></div>
-  <div class="premio-lbl"><span contenteditable="true" style="outline:none">Até R$ 25</span></div>
+<div id="jogos-ativos-container">
+  <div class="jogo" style="position:relative">
+    <button onclick="deletarJogoAtivo(this)" style="position:absolute;top:8px;right:8px;background:none;border:none;color:rgba(192,57,43,.4);font-size:16px;cursor:pointer;padding:4px" title="Remover jogo"><i class="bi bi-trash"></i></button>
+    <h3><span contenteditable="true" style="outline:none">Semana 1 (01-05/abr) — VINTÃO</span><span style="font-size:12px;opacity:.3;margin-left:6px">✎</span></h3>
+    <div class="como"><span contenteditable="true" style="outline:none">Nota de R$ 20 circula. Quem fizer a maior venda do dia, fica com a nota. Se alguém superar, a nota muda de mão. Sábado: quem tiver, ganha.</span></div>
+    <div class="premio-lbl"><span contenteditable="true" style="outline:none">R$ 20</span></div>
+  </div>
+  <div class="jogo" style="position:relative">
+    <button onclick="deletarJogoAtivo(this)" style="position:absolute;top:8px;right:8px;background:none;border:none;color:rgba(192,57,43,.4);font-size:16px;cursor:pointer;padding:4px" title="Remover jogo"><i class="bi bi-trash"></i></button>
+    <h3><span contenteditable="true" style="outline:none">Semana 2 (06-12/abr) — DESAFIO BOB'S</span><span style="font-size:12px;opacity:.3;margin-left:6px">✎</span></h3>
+    <div class="como"><span contenteditable="true" style="outline:none">Quem bater a meta diária (Fernanda: X extras | Joyce: R$ X no Empório) ganha sanduíche do Bob's. Simples: bateu = ganhou.</span></div>
+    <div class="premio-lbl"><span contenteditable="true" style="outline:none">Sanduíche Bob's (até R$ 25)</span></div>
+  </div>
+  <div class="jogo" style="position:relative">
+    <button onclick="deletarJogoAtivo(this)" style="position:absolute;top:8px;right:8px;background:none;border:none;color:rgba(192,57,43,.4);font-size:16px;cursor:pointer;padding:4px" title="Remover jogo"><i class="bi bi-trash"></i></button>
+    <h3><span contenteditable="true" style="outline:none">Semana 3 (13-19/abr) — Clique para definir</span><span style="font-size:12px;opacity:.3;margin-left:6px">✎</span></h3>
+    <div class="como"><span contenteditable="true" style="outline:none">Clique para descrever o jogo da semana...</span></div>
+    <div class="premio-lbl"><span contenteditable="true" style="outline:none">Até R$ 25</span></div>
+  </div>
+  <div class="jogo" style="position:relative">
+    <button onclick="deletarJogoAtivo(this)" style="position:absolute;top:8px;right:8px;background:none;border:none;color:rgba(192,57,43,.4);font-size:16px;cursor:pointer;padding:4px" title="Remover jogo"><i class="bi bi-trash"></i></button>
+    <h3><span contenteditable="true" style="outline:none">Semana 4 (20-30/abr) — Clique para definir</span><span style="font-size:12px;opacity:.3;margin-left:6px">✎</span></h3>
+    <div class="como"><span contenteditable="true" style="outline:none">Clique para descrever o jogo da semana...</span></div>
+    <div class="premio-lbl"><span contenteditable="true" style="outline:none">Até R$ 25</span></div>
+  </div>
 </div>
 <div style="text-align:center;margin:8px 0 0;font-size:11px;color:rgba(35,77,103,.35);font-style:italic">
-  Clique em qualquer texto para editar — as alterações são salvas automaticamente
+  Clique em qualquer texto para editar · <i class="bi bi-trash"></i> para remover · Alterações salvas automaticamente
 </div>
 
 
@@ -3667,18 +3673,12 @@ document.addEventListener('DOMContentLoaded', function(){
 });
 
 function selecionarJogo(num, nome, objetivo, descricao, premio) {
-  // Find the editable jogos in Estrategias & Jogos
-  var jogos = document.querySelectorAll('#view-estrategias-jogos .jogo');
-  // Find first empty slot (contains "Clique para definir")
+  var container = document.getElementById('jogos-ativos-container');
+  if(!container) return;
+  var jogos = container.querySelectorAll('.jogo');
   var slot = null;
   for(var i=0; i<jogos.length; i++){
-    if(jogos[i].textContent.indexOf('Clique para definir') !== -1){
-      slot = jogos[i]; break;
-    }
-  }
-  if(!slot){
-    // No empty slot - use last one
-    slot = jogos[jogos.length - 1];
+    if(jogos[i].textContent.indexOf('Clique para definir') !== -1){ slot = jogos[i]; break; }
   }
   if(slot){
     var h3span = slot.querySelector('h3 span[contenteditable]');
@@ -3687,11 +3687,26 @@ function selecionarJogo(num, nome, objetivo, descricao, premio) {
     if(h3span) h3span.textContent = nome;
     if(como) como.textContent = descricao;
     if(premioel) premioel.textContent = premio;
-    // Save to localStorage
+  } else {
+    var html = '<div class="jogo" style="position:relative">' +
+      '<button onclick="deletarJogoAtivo(this)" style="position:absolute;top:8px;right:8px;background:none;border:none;color:rgba(192,57,43,.4);font-size:16px;cursor:pointer;padding:4px" title="Remover jogo"><i class="bi bi-trash"></i></button>' +
+      '<h3><span contenteditable="true" style="outline:none">' + nome + '</span><span style="font-size:12px;opacity:.3;margin-left:6px">\u270e</span></h3>' +
+      '<div class="como"><span contenteditable="true" style="outline:none">' + descricao + '</span></div>' +
+      '<div class="premio-lbl"><span contenteditable="true" style="outline:none">' + premio + '</span></div></div>';
+    container.insertAdjacentHTML('beforeend', html);
+  }
+  if(typeof saveAll === 'function') saveAll();
+  switchView('estrategias-jogos');
+}
+
+function deletarJogoAtivo(btn) {
+  var card = btn.closest('.jogo');
+  if(!card) return;
+  var nome = card.querySelector('h3 span[contenteditable]');
+  var titulo = nome ? nome.textContent : 'este jogo';
+  if(confirm('Remover "' + titulo + '" dos jogos do m\u00eas?')){
+    card.remove();
     if(typeof saveAll === 'function') saveAll();
-    // Visual feedback
-    alert('Jogo "' + nome + '" adicionado em Estrat\u00e9gias & Jogos!');
-    switchView('estrategias-jogos');
   }
 }
 
