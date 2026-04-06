@@ -940,7 +940,7 @@ tr.tot td { font-weight: 700; background: rgba(222,180,40,.06); border-top: 2px 
 #login-error { color: #C0392B; font-size: 12px; margin-top: 8px; display: none; }
 
 /* ===== MEU DIA ZELOSO �� INLINE ===== */
-.mdz-container { max-width: 480px; margin: 0 auto; }
+.mdz-container { max-width: 100%; }
 .mdz-date-nav {
   display: flex; align-items: center; justify-content: center; gap: 16px; margin-bottom: 20px;
 }
@@ -1021,30 +1021,36 @@ tr.tot td { font-weight: 700; background: rgba(222,180,40,.06); border-top: 2px 
 .mdz-inputs-grid .mdz-input-card { margin-bottom: 0; }
 .mdz-inputs-grid .mdz-ic-input { font-size: 1.8rem; }
 
-/* Desperdício hero */
+/* Desperdício hero — CENTRALIZADO, PRIMEIRO DA TELA */
 .mdz-desp-hero {
-  border-radius: 16px; padding: 20px 22px; margin-bottom: 12px;
-  background: linear-gradient(135deg, rgba(192,57,43,.07), rgba(192,57,43,.03));
-  border: 1.5px solid rgba(192,57,43,.20); border-left: 4px solid #C0392B;
+  border-radius: 20px; padding: 28px 24px; margin-bottom: 20px;
+  background: linear-gradient(135deg, rgba(192,57,43,.06), rgba(192,57,43,.02));
+  border: 2px solid rgba(192,57,43,.15);
+  text-align: center;
   transition: all .3s ease;
 }
 .mdz-desp-hero.zero {
-  background: linear-gradient(135deg, rgba(39,174,96,.07), rgba(39,174,96,.03));
-  border-color: rgba(39,174,96,.25); border-left-color: #27AE60;
+  background: linear-gradient(135deg, rgba(39,174,96,.06), rgba(39,174,96,.02));
+  border-color: rgba(39,174,96,.20);
+}
+.mdz-desp-hero.empty {
+  background: var(--z-gray-100); border-color: var(--z-gray-200);
 }
 .mdz-desp-chip {
   display: inline-flex; align-items: center; gap: 5px;
-  background: rgba(192,57,43,.10); border: 1px solid rgba(192,57,43,.20);
-  border-radius: 20px; padding: 2px 10px; font-size: .6rem; font-weight: 700;
-  color: #C0392B; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 8px;
+  background: rgba(192,57,43,.10); border: 1px solid rgba(192,57,43,.18);
+  border-radius: 20px; padding: 3px 12px; font-size: .6rem; font-weight: 700;
+  color: #C0392B; letter-spacing: .08em; text-transform: uppercase;
 }
-.mdz-desp-chip.zero { background: rgba(39,174,96,.10); border-color: rgba(39,174,96,.20); color: #27AE60; }
+.mdz-desp-chip.zero { background: rgba(39,174,96,.10); border-color: rgba(39,174,96,.18); color: #27AE60; }
+.mdz-desp-chip.empty { background: var(--z-gray-200); border-color: var(--z-gray-300); color: var(--z-gray-500); }
 .mdz-desp-num {
-  font-size: 2.8rem; font-weight: 900; color: #C0392B; line-height: 1;
-  letter-spacing: -.03em; margin: 4px 0 6px;
+  font-size: 3.2rem; font-weight: 900; color: #C0392B; line-height: 1;
+  letter-spacing: -.03em; margin: 12px 0 8px;
 }
 .mdz-desp-num.zero { color: #27AE60; }
-.mdz-desp-sub { font-size: .7rem; color: var(--z-gray-500); font-weight: 500; line-height: 1.4; }
+.mdz-desp-num.empty { color: var(--z-gray-300); font-size: 2rem; }
+.mdz-desp-sub { font-size: .72rem; color: var(--z-gray-500); font-weight: 500; line-height: 1.4; }
 
 /* Metrics 3-up */
 .mdz-metrics-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
@@ -2450,6 +2456,11 @@ tr.tot td { font-weight: 700; background: rgba(222,180,40,.06); border-top: 2px 
       <div class="mdz-date-arrow" onclick="mdzChangeDate(1,'amanda')"><i class="bi bi-chevron-right"></i></div>
     </div>
     <div class="mdz-dayoff" id="mdz-dayoff-amanda"><i class="bi bi-calendar-x"></i> Dia sem expediente</div>
+    <div class="mdz-desp-hero empty" id="mdz-desp-hero-amanda">
+      <div class="mdz-desp-chip empty" id="mdz-desp-chip-amanda">Oportunidade do dia</div>
+      <div class="mdz-desp-num empty" id="mdz-desp-amanda">Preencha abaixo</div>
+      <div class="mdz-desp-sub" id="mdz-desp-sub-amanda">Quanto ficou na mesa hoje?</div>
+    </div>
     <div class="mdz-counter">
       <div class="mdz-ring-wrap">
         <svg class="mdz-ring-svg" viewBox="0 0 72 72"><circle class="mdz-ring-bg" cx="36" cy="36" r="30"/><circle class="mdz-ring-fill" cx="36" cy="36" r="30" id="mdz-ring-amanda" stroke-dasharray="188.5" stroke-dashoffset="188.5"/></svg>
@@ -2467,17 +2478,10 @@ tr.tot td { font-weight: 700; background: rgba(222,180,40,.06); border-top: 2px 
       <div class="mdz-input-card"><div class="mdz-ic-header"><div class="mdz-ic-icon" style="background:var(--z-gold-wash-08)"><i class="bi bi-cash-stack" style="color:var(--z-gold)"></i></div><div><div class="mdz-ic-label">Valor extras</div><span class="mdz-ic-hint">Total dos upsells</span></div></div><div class="mdz-ic-row"><span class="mdz-ic-prefix">R$</span><input class="mdz-ic-input" type="number" inputmode="decimal" step="0.01" placeholder="0" id="mdz-valextra-amanda" oninput="mdzCalc('amanda')"></div></div>
       <div class="mdz-input-card"><div class="mdz-ic-header"><div class="mdz-ic-icon" style="background:rgba(35,77,103,.06)"><i class="bi bi-wallet2" style="color:var(--z-blue)"></i></div><div><div class="mdz-ic-label">Total do dia</div><span class="mdz-ic-hint">Do sistema</span></div></div><div class="mdz-ic-row"><span class="mdz-ic-prefix">R$</span><input class="mdz-ic-input" type="number" inputmode="decimal" step="0.01" placeholder="0" id="mdz-valor-amanda" oninput="mdzCalc('amanda')"></div></div>
     </div>
-    <div class="mdz-results" id="mdz-results-amanda">
-      <div class="mdz-desp-hero" id="mdz-desp-hero-amanda">
-        <div class="mdz-desp-chip" id="mdz-desp-chip-amanda">Oportunidade não capturada</div>
-        <div class="mdz-desp-num" id="mdz-desp-amanda">—</div>
-        <div class="mdz-desp-sub" id="mdz-desp-sub-amanda">Tutores que saíram sem extras</div>
-      </div>
-      <div class="mdz-metrics-row">
-        <div class="mdz-metric"><div class="mdz-metric-label">Aproveitamento</div><div class="mdz-metric-value" id="mdz-conv-amanda">—</div></div>
-        <div class="mdz-metric"><div class="mdz-metric-label">Ticket Médio</div><div class="mdz-metric-value" id="mdz-ticket-amanda">—</div></div>
-        <div class="mdz-metric"><div class="mdz-metric-label">Ticket Extra</div><div class="mdz-metric-value" id="mdz-textra-amanda">—</div></div>
-      </div>
+    <div class="mdz-metrics-row" id="mdz-results-amanda" style="display:none">
+      <div class="mdz-metric"><div class="mdz-metric-label">Aproveitamento</div><div class="mdz-metric-value" id="mdz-conv-amanda">—</div></div>
+      <div class="mdz-metric"><div class="mdz-metric-label">Ticket Médio</div><div class="mdz-metric-value" id="mdz-ticket-amanda">—</div></div>
+      <div class="mdz-metric"><div class="mdz-metric-label">Ticket Extra</div><div class="mdz-metric-value" id="mdz-textra-amanda">—</div></div>
     </div>
     <div class="mdz-streak"><div class="mdz-streak-header"><span class="mdz-streak-title">Sequência do mês</span><span class="mdz-streak-count" id="mdz-streak-amanda">0 / 24 dias</span></div><div class="mdz-streak-dots" id="mdz-dots-amanda"></div></div>
     <button class="mdz-save-btn" id="mdz-save-amanda" onclick="mdzSave('amanda')"><i class="bi bi-check-circle-fill"></i> Salvar meu dia</button>
@@ -2764,6 +2768,12 @@ tr.tot td { font-weight: 700; background: rgba(222,180,40,.06); border-top: 2px 
       <div class="mdz-date-arrow" onclick="mdzChangeDate(1,'fernanda')"><i class="bi bi-chevron-right"></i></div>
     </div>
     <div class="mdz-dayoff" id="mdz-dayoff-fernanda"><i class="bi bi-calendar-x"></i> Dia sem expediente</div>
+    <!-- HERO DESPERDÍCIO — PRIMEIRO DA TELA -->
+    <div class="mdz-desp-hero empty" id="mdz-desp-hero-fernanda">
+      <div class="mdz-desp-chip empty" id="mdz-desp-chip-fernanda">Oportunidade do dia</div>
+      <div class="mdz-desp-num empty" id="mdz-desp-fernanda">Preencha abaixo</div>
+      <div class="mdz-desp-sub" id="mdz-desp-sub-fernanda">Quanto ficou na mesa hoje?</div>
+    </div>
     <div class="mdz-counter">
       <div class="mdz-ring-wrap">
         <svg class="mdz-ring-svg" viewBox="0 0 72 72"><circle class="mdz-ring-bg" cx="36" cy="36" r="30"/><circle class="mdz-ring-fill" cx="36" cy="36" r="30" id="mdz-ring-fernanda" stroke-dasharray="188.5" stroke-dashoffset="188.5"/></svg>
@@ -2781,17 +2791,10 @@ tr.tot td { font-weight: 700; background: rgba(222,180,40,.06); border-top: 2px 
       <div class="mdz-input-card"><div class="mdz-ic-header"><div class="mdz-ic-icon" style="background:var(--z-gold-wash-08)"><i class="bi bi-cash-stack" style="color:var(--z-gold)"></i></div><div><div class="mdz-ic-label">Valor extras</div><span class="mdz-ic-hint">Total dos upsells</span></div></div><div class="mdz-ic-row"><span class="mdz-ic-prefix">R$</span><input class="mdz-ic-input" type="number" inputmode="decimal" step="0.01" placeholder="0" id="mdz-valextra-fernanda" oninput="mdzCalc('fernanda')"></div></div>
       <div class="mdz-input-card"><div class="mdz-ic-header"><div class="mdz-ic-icon" style="background:rgba(35,77,103,.06)"><i class="bi bi-wallet2" style="color:var(--z-blue)"></i></div><div><div class="mdz-ic-label">Total do dia</div><span class="mdz-ic-hint">Do sistema</span></div></div><div class="mdz-ic-row"><span class="mdz-ic-prefix">R$</span><input class="mdz-ic-input" type="number" inputmode="decimal" step="0.01" placeholder="0" id="mdz-valor-fernanda" oninput="mdzCalc('fernanda')"></div></div>
     </div>
-    <div class="mdz-results" id="mdz-results-fernanda">
-      <div class="mdz-desp-hero" id="mdz-desp-hero-fernanda">
-        <div class="mdz-desp-chip" id="mdz-desp-chip-fernanda">Oportunidade não capturada</div>
-        <div class="mdz-desp-num" id="mdz-desp-fernanda">—</div>
-        <div class="mdz-desp-sub" id="mdz-desp-sub-fernanda">Tutores que saíram sem extras</div>
-      </div>
-      <div class="mdz-metrics-row">
-        <div class="mdz-metric"><div class="mdz-metric-label">Aproveitamento</div><div class="mdz-metric-value" id="mdz-conv-fernanda">—</div></div>
-        <div class="mdz-metric"><div class="mdz-metric-label">Ticket Médio</div><div class="mdz-metric-value" id="mdz-ticket-fernanda">—</div></div>
-        <div class="mdz-metric"><div class="mdz-metric-label">Ticket Extra</div><div class="mdz-metric-value" id="mdz-textra-fernanda">—</div></div>
-      </div>
+    <div class="mdz-metrics-row" id="mdz-results-fernanda" style="display:none">
+      <div class="mdz-metric"><div class="mdz-metric-label">Aproveitamento</div><div class="mdz-metric-value" id="mdz-conv-fernanda">—</div></div>
+      <div class="mdz-metric"><div class="mdz-metric-label">Ticket Médio</div><div class="mdz-metric-value" id="mdz-ticket-fernanda">—</div></div>
+      <div class="mdz-metric"><div class="mdz-metric-label">Ticket Extra</div><div class="mdz-metric-value" id="mdz-textra-fernanda">—</div></div>
     </div>
     <div class="mdz-streak"><div class="mdz-streak-header"><span class="mdz-streak-title">Sequência do mês</span><span class="mdz-streak-count" id="mdz-streak-fernanda">0 / 24 dias</span></div><div class="mdz-streak-dots" id="mdz-dots-fernanda"></div></div>
     <button class="mdz-save-btn" id="mdz-save-fernanda" onclick="mdzSave('fernanda')"><i class="bi bi-check-circle-fill"></i> Salvar meu dia</button>
@@ -2968,6 +2971,11 @@ tr.tot td { font-weight: 700; background: rgba(222,180,40,.06); border-top: 2px 
       <div class="mdz-date-arrow" onclick="mdzChangeDate(1,'joyce')"><i class="bi bi-chevron-right"></i></div>
     </div>
     <div class="mdz-dayoff" id="mdz-dayoff-joyce"><i class="bi bi-calendar-x"></i> Dia sem expediente</div>
+    <div class="mdz-desp-hero empty" id="mdz-desp-hero-joyce">
+      <div class="mdz-desp-chip empty" id="mdz-desp-chip-joyce">Oportunidade do dia</div>
+      <div class="mdz-desp-num empty" id="mdz-desp-joyce">Preencha abaixo</div>
+      <div class="mdz-desp-sub" id="mdz-desp-sub-joyce">Quanto ficou na mesa hoje?</div>
+    </div>
     <div class="mdz-counter">
       <div class="mdz-ring-wrap">
         <svg class="mdz-ring-svg" viewBox="0 0 72 72"><circle class="mdz-ring-bg" cx="36" cy="36" r="30"/><circle class="mdz-ring-fill" cx="36" cy="36" r="30" id="mdz-ring-joyce" stroke-dasharray="188.5" stroke-dashoffset="188.5"/></svg>
@@ -2985,17 +2993,10 @@ tr.tot td { font-weight: 700; background: rgba(222,180,40,.06); border-top: 2px 
       <div class="mdz-input-card"><div class="mdz-ic-header"><div class="mdz-ic-icon" style="background:var(--z-gold-wash-08)"><i class="bi bi-cash-stack" style="color:var(--z-gold)"></i></div><div><div class="mdz-ic-label">Valor extras</div><span class="mdz-ic-hint">Total dos upsells</span></div></div><div class="mdz-ic-row"><span class="mdz-ic-prefix">R$</span><input class="mdz-ic-input" type="number" inputmode="decimal" step="0.01" placeholder="0" id="mdz-valextra-joyce" oninput="mdzCalc('joyce')"></div></div>
       <div class="mdz-input-card"><div class="mdz-ic-header"><div class="mdz-ic-icon" style="background:rgba(35,77,103,.06)"><i class="bi bi-wallet2" style="color:var(--z-blue)"></i></div><div><div class="mdz-ic-label">Total do dia</div><span class="mdz-ic-hint">Do sistema</span></div></div><div class="mdz-ic-row"><span class="mdz-ic-prefix">R$</span><input class="mdz-ic-input" type="number" inputmode="decimal" step="0.01" placeholder="0" id="mdz-valor-joyce" oninput="mdzCalc('joyce')"></div></div>
     </div>
-    <div class="mdz-results" id="mdz-results-joyce">
-      <div class="mdz-desp-hero" id="mdz-desp-hero-joyce">
-        <div class="mdz-desp-chip" id="mdz-desp-chip-joyce">Oportunidade não capturada</div>
-        <div class="mdz-desp-num" id="mdz-desp-joyce">—</div>
-        <div class="mdz-desp-sub" id="mdz-desp-sub-joyce">Tutores que saíram sem extras</div>
-      </div>
-      <div class="mdz-metrics-row">
-        <div class="mdz-metric"><div class="mdz-metric-label">Aproveitamento</div><div class="mdz-metric-value" id="mdz-conv-joyce">—</div></div>
-        <div class="mdz-metric"><div class="mdz-metric-label">Ticket Médio</div><div class="mdz-metric-value" id="mdz-ticket-joyce">—</div></div>
-        <div class="mdz-metric"><div class="mdz-metric-label">Ticket Extra</div><div class="mdz-metric-value" id="mdz-textra-joyce">—</div></div>
-      </div>
+    <div class="mdz-metrics-row" id="mdz-results-joyce" style="display:none">
+      <div class="mdz-metric"><div class="mdz-metric-label">Aproveitamento</div><div class="mdz-metric-value" id="mdz-conv-joyce">—</div></div>
+      <div class="mdz-metric"><div class="mdz-metric-label">Ticket Médio</div><div class="mdz-metric-value" id="mdz-ticket-joyce">—</div></div>
+      <div class="mdz-metric"><div class="mdz-metric-label">Ticket Extra</div><div class="mdz-metric-value" id="mdz-textra-joyce">—</div></div>
     </div>
     <div class="mdz-streak"><div class="mdz-streak-header"><span class="mdz-streak-title">Sequência do mês</span><span class="mdz-streak-count" id="mdz-streak-joyce">0 / 24 dias</span></div><div class="mdz-streak-dots" id="mdz-dots-joyce"></div></div>
     <button class="mdz-save-btn" id="mdz-save-joyce" onclick="mdzSave('joyce')"><i class="bi bi-check-circle-fill"></i> Salvar meu dia</button>
@@ -4923,10 +4924,21 @@ function mdzCalc(person){
   var valor = parseFloat(document.getElementById('mdz-valor-'+person)?.value)||0;
 
   var res = document.getElementById('mdz-results-'+person);
-  if(!res) return;
 
-  if(atendi===0 && extra===0 && valor===0){ res.classList.remove('show'); return; }
-  res.classList.add('show');
+  if(atendi===0 && extra===0 && valor===0){
+    if(res) res.style.display = 'none';
+    /* Reset hero to empty state */
+    var hero = document.getElementById('mdz-desp-hero-'+person);
+    var despNum = document.getElementById('mdz-desp-'+person);
+    var despChip = document.getElementById('mdz-desp-chip-'+person);
+    var despSub = document.getElementById('mdz-desp-sub-'+person);
+    if(hero){ hero.className = 'mdz-desp-hero empty'; }
+    if(despNum){ despNum.textContent = 'Preencha abaixo'; despNum.className = 'mdz-desp-num empty'; }
+    if(despChip){ despChip.textContent = 'Oportunidade do dia'; despChip.className = 'mdz-desp-chip empty'; }
+    if(despSub) despSub.textContent = 'Quanto ficou na mesa hoje?';
+    return;
+  }
+  if(res) res.style.display = '';
 
   // Aproveitamento = % dos tutores que levaram algo a mais
   var aprov = atendi>0 ? (extra/atendi*100) : 0;
