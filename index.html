@@ -1016,6 +1016,45 @@ tr.tot td { font-weight: 700; background: rgba(222,180,40,.06); border-top: 2px 
   font-size: .6rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
   color: var(--z-gold); margin-bottom: 12px; display: flex; align-items: center; gap: 6px;
 }
+/* 2x2 inputs grid */
+.mdz-inputs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 0; }
+.mdz-inputs-grid .mdz-input-card { margin-bottom: 0; }
+.mdz-inputs-grid .mdz-ic-input { font-size: 1.8rem; }
+
+/* Desperdício hero */
+.mdz-desp-hero {
+  border-radius: 16px; padding: 20px 22px; margin-bottom: 12px;
+  background: linear-gradient(135deg, rgba(192,57,43,.07), rgba(192,57,43,.03));
+  border: 1.5px solid rgba(192,57,43,.20); border-left: 4px solid #C0392B;
+  transition: all .3s ease;
+}
+.mdz-desp-hero.zero {
+  background: linear-gradient(135deg, rgba(39,174,96,.07), rgba(39,174,96,.03));
+  border-color: rgba(39,174,96,.25); border-left-color: #27AE60;
+}
+.mdz-desp-chip {
+  display: inline-flex; align-items: center; gap: 5px;
+  background: rgba(192,57,43,.10); border: 1px solid rgba(192,57,43,.20);
+  border-radius: 20px; padding: 2px 10px; font-size: .6rem; font-weight: 700;
+  color: #C0392B; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 8px;
+}
+.mdz-desp-chip.zero { background: rgba(39,174,96,.10); border-color: rgba(39,174,96,.20); color: #27AE60; }
+.mdz-desp-num {
+  font-size: 2.8rem; font-weight: 900; color: #C0392B; line-height: 1;
+  letter-spacing: -.03em; margin: 4px 0 6px;
+}
+.mdz-desp-num.zero { color: #27AE60; }
+.mdz-desp-sub { font-size: .7rem; color: var(--z-gray-500); font-weight: 500; line-height: 1.4; }
+
+/* Metrics 3-up */
+.mdz-metrics-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+.mdz-metric { background: var(--z-white); border-radius: 12px; padding: 12px 10px; text-align: center; border: 1.5px solid rgba(35,77,103,.06); }
+.mdz-metric-label { font-size: .55rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--z-gray-400); margin-bottom: 4px; }
+.mdz-metric-value { font-size: 1.1rem; font-weight: 800; color: var(--z-blue); }
+.mdz-metric-value.good { color: var(--z-green); }
+.mdz-metric-value.warn { color: #E67E22; }
+.mdz-metric-value.bad { color: var(--z-red); }
+
 .mdz-results-grid { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 10px; }
 .mdz-result-item { text-align: center; }
 .mdz-result-label { font-size: .55rem; font-weight: 600; color: var(--z-gray-400); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 3px; }
@@ -1309,7 +1348,7 @@ tr.tot td { font-weight: 700; background: rgba(222,180,40,.06); border-top: 2px 
     <div class="kpi-value" id="kpi-eco">R$ 0</div>
     <div class="kpi-pct" id="kpi-eco-pct">0% da meta Cuidado</div>
     <div class="kpi-falta" id="kpi-eco-falta" style="font-size:12px;font-weight:700;color:var(--z-red);margin-top:4px">Falta: R$ 107.188</div>
-    <div class="kpi-meta">Meta: R$ 107.188</div>
+    <div class="kpi-meta">Meta: <span id="kpi-meta-eco">R$ 107.188</span></div>
   </div>
   <div class="kpi-card spa">
     <img src="assets/stickers/Pata.png" style="position:absolute;top:10px;right:12px;width:48px;opacity:.4;pointer-events:none" alt="">
@@ -1318,7 +1357,7 @@ tr.tot td { font-weight: 700; background: rgba(222,180,40,.06); border-top: 2px 
     <div class="kpi-value" id="kpi-spa">R$ 0</div>
     <div class="kpi-pct" id="kpi-spa-pct">0%</div>
     <div class="kpi-falta" id="kpi-spa-falta" style="font-size:12px;font-weight:700;color:var(--z-red);margin-top:4px">Falta: R$ 55.032</div>
-    <div class="kpi-meta">Meta: R$ 55.032</div>
+    <div class="kpi-meta">Meta: <span id="kpi-meta-spa">R$ 55.032</span></div>
   </div>
   <div class="kpi-card emporio">
     <img src="assets/stickers/Vasilha ração.png" style="position:absolute;top:10px;right:12px;width:48px;opacity:.4;pointer-events:none" alt="">
@@ -1327,7 +1366,7 @@ tr.tot td { font-weight: 700; background: rgba(222,180,40,.06); border-top: 2px 
     <div class="kpi-value" id="kpi-emp">R$ 0</div>
     <div class="kpi-pct" id="kpi-emp-pct">0%</div>
     <div class="kpi-falta" id="kpi-emp-falta" style="font-size:12px;font-weight:700;color:var(--z-red);margin-top:4px">Falta: R$ 40.139</div>
-    <div class="kpi-meta">Meta: R$ 40.139</div>
+    <div class="kpi-meta">Meta: <span id="kpi-meta-emp">R$ 40.139</span></div>
   </div>
   <div class="kpi-card vetcare">
     <img src="assets/stickers/Cachorro coração.png" style="position:absolute;top:10px;right:12px;width:48px;opacity:.4;pointer-events:none" alt="">
@@ -1336,7 +1375,7 @@ tr.tot td { font-weight: 700; background: rgba(222,180,40,.06); border-top: 2px 
     <div class="kpi-value" id="kpi-vet">R$ 0</div>
     <div class="kpi-pct" id="kpi-vet-pct">0%</div>
     <div class="kpi-falta" id="kpi-vet-falta" style="font-size:12px;font-weight:700;color:var(--z-red);margin-top:4px">Falta: R$ 12.018</div>
-    <div class="kpi-meta">Meta: R$ 12.018</div>
+    <div class="kpi-meta">Meta: <span id="kpi-meta-vet">R$ 12.018</span></div>
   </div>
 </div>
 
@@ -1468,6 +1507,7 @@ tr.tot td { font-weight: 700; background: rgba(222,180,40,.06); border-top: 2px 
 <h2 class="sec"><i class="bi bi-graph-up-arrow"></i> Acompanhamento Semanal</h2>
 <p style="font-size:12px;color:var(--z-gray-500);margin-bottom:12px">Preencha os números. Gráficos atualizam automaticamente. Dados salvos no navegador.</p>
 
+<div id="trackers-container">
 <!-- EXTRAS SPA -->
 <div class="tracker" style="border-left:3px solid var(--z-spa)"><h3>Extras SPA Dermoprotetor <span class="badge" style="background:var(--z-spa)">Meta Cuidado: R$ 9.557</span></h3>
 <div class="tracker-grid"><div class="hd"></div><div class="hd">Sem 1</div><div class="hd">Sem 2</div><div class="hd">Sem 3</div><div class="hd">Sem 4</div><div class="hd">Sem 5</div><div class="hd">Total</div>
@@ -1527,21 +1567,22 @@ tr.tot td { font-weight: 700; background: rgba(222,180,40,.06); border-top: 2px 
   <div class="progress-level" style="border-color:var(--z-blue)"><div class="level-header"><span class="level-name" style="color:var(--z-blue)">Zêlo</span><span class="level-pct" id="pctAlvo-daycare">0%</span></div><div class="bar-bg"><div class="bar-fill" style="background:linear-gradient(90deg,var(--z-blue),#3a6d87);width:0%" id="barAlvo-daycare"></div></div><div class="level-footer"><span>Meta: R$ 50.294</span><span id="faltaAlvo-daycare"><span class="falta">Falta: R$ 50.294</span></span></div></div>
   <div class="progress-level" style="border-color:var(--z-gold)"><div class="level-header"><span class="level-name" style="color:var(--z-gold)">Encanto</span><span class="level-pct" id="pctOuro-daycare">0%</span></div><div class="bar-bg"><div class="bar-fill" style="background:linear-gradient(90deg,var(--z-gold),var(--z-gold-light));width:0%" id="barOuro-daycare"></div></div><div class="level-footer"><span>Meta: R$ 54.486</span><span id="faltaOuro-daycare"><span class="falta">Falta: R$ 54.486</span></span></div></div>
 </div></div>
+</div><!-- /trackers-container -->
 
 <!-- ===== 10. RESUMO ACUMULADO ===== -->
 <h2 class="sec"><i class="bi bi-pie-chart"></i> Resumo Acumulado</h2>
-<div class="sum-card">
+<div class="sum-card" id="sum-card-container">
 <h3 id="acum-title">Acumulado</h3>
 <table>
   <tr><th style="text-align:left">Área</th><th>Acumulado</th><th>Meta Cuidado</th><th>Falta</th><th>%</th></tr>
-  <tr style="border-left:3px solid var(--z-spa)"><td style="color:var(--z-spa)">Extras SPA Dermoprotetor</td><td id="sum-extras">R$ 0</td><td style="color:rgba(255,255,255,.4)">R$ 9.557</td><td id="sumfalta-extras" style="color:var(--z-red)">R$ 9.557</td><td id="sumpct-extras" style="color:var(--z-spa)">0%</td></tr>
-  <tr style="border-left:3px solid var(--z-spa)"><td style="color:var(--z-spa)">Banho SPA Dermoprotetor</td><td id="sum-banho">R$ 0</td><td style="color:rgba(255,255,255,.4)">R$ 45.475</td><td id="sumfalta-banho" style="color:var(--z-red)">R$ 45.475</td><td id="sumpct-banho" style="color:var(--z-spa)">0%</td></tr>
-  <tr style="border-left:3px solid var(--z-emporio)"><td style="color:var(--z-emporio-light)">Empório</td><td id="sum-emporio">R$ 0</td><td style="color:rgba(255,255,255,.4)">R$ 40.139</td><td id="sumfalta-emporio" style="color:var(--z-red)">R$ 40.139</td><td id="sumpct-emporio" style="color:var(--z-emporio-light)">0%</td></tr>
-  <tr style="border-left:3px solid var(--z-vetcare)"><td style="color:var(--z-vetcare-light)">Veterinária</td><td id="sum-vet">R$ 0</td><td style="color:rgba(255,255,255,.4)">R$ 12.018</td><td id="sumfalta-vet" style="color:var(--z-red)">R$ 12.018</td><td id="sumpct-vet" style="color:var(--z-vetcare-light)">0%</td></tr>
-  <tr style="border-left:3px solid var(--z-hosp)"><td style="color:var(--z-hosp)">Hospedagem</td><td id="sum-hosp">R$ 0</td><td style="color:rgba(255,255,255,.4)">R$ 32.599</td><td id="sumfalta-hosp" style="color:var(--z-red)">R$ 32.599</td><td id="sumpct-hosp" style="color:var(--z-hosp)">0%</td></tr>
-  <tr style="border-left:3px solid var(--z-daycare)"><td style="color:var(--z-daycare)">Daycare</td><td id="sum-daycare">R$ 0</td><td style="color:rgba(255,255,255,.4)">R$ 46.103</td><td id="sumfalta-daycare" style="color:var(--z-red)">R$ 46.103</td><td id="sumpct-daycare" style="color:var(--z-daycare)">0%</td></tr>
-  <tr style="border-top:2px solid var(--z-gold)"><td style="font-weight:700">Ecossistema</td><td id="sum-eco" style="font-weight:700">R$ 0</td><td style="color:rgba(255,255,255,.4)">R$ 107.188</td><td id="sumfalta-eco" style="color:var(--z-gold);font-weight:700">R$ 107.188</td><td id="sumpct-eco" style="color:var(--z-gold);font-weight:700">0%</td></tr>
-  <tr><td style="font-weight:700">Total Zêluz</td><td id="sum-total" style="font-weight:700">R$ 0</td><td style="color:rgba(255,255,255,.4)">R$ 185.890</td><td id="sumfalta-total" style="color:var(--z-gold);font-weight:700">R$ 185.890</td><td id="sumpct-total" style="color:var(--z-gold);font-weight:700">0%</td></tr>
+  <tr style="border-left:3px solid var(--z-spa)"><td style="color:var(--z-spa)">Extras SPA Dermoprotetor</td><td id="sum-extras">R$ 0</td><td id="sum-meta-extras" style="color:rgba(255,255,255,.4)">R$ 9.557</td><td id="sumfalta-extras" style="color:var(--z-red)">R$ 9.557</td><td id="sumpct-extras" style="color:var(--z-spa)">0%</td></tr>
+  <tr style="border-left:3px solid var(--z-spa)"><td style="color:var(--z-spa)">Banho SPA Dermoprotetor</td><td id="sum-banho">R$ 0</td><td id="sum-meta-banho" style="color:rgba(255,255,255,.4)">R$ 45.475</td><td id="sumfalta-banho" style="color:var(--z-red)">R$ 45.475</td><td id="sumpct-banho" style="color:var(--z-spa)">0%</td></tr>
+  <tr style="border-left:3px solid var(--z-emporio)"><td style="color:var(--z-emporio-light)">Empório</td><td id="sum-emporio">R$ 0</td><td id="sum-meta-emporio" style="color:rgba(255,255,255,.4)">R$ 40.139</td><td id="sumfalta-emporio" style="color:var(--z-red)">R$ 40.139</td><td id="sumpct-emporio" style="color:var(--z-emporio-light)">0%</td></tr>
+  <tr style="border-left:3px solid var(--z-vetcare)"><td style="color:var(--z-vetcare-light)">Veterinária</td><td id="sum-vet">R$ 0</td><td id="sum-meta-vet" style="color:rgba(255,255,255,.4)">R$ 12.018</td><td id="sumfalta-vet" style="color:var(--z-red)">R$ 12.018</td><td id="sumpct-vet" style="color:var(--z-vetcare-light)">0%</td></tr>
+  <tr style="border-left:3px solid var(--z-hosp)"><td style="color:var(--z-hosp)">Hospedagem</td><td id="sum-hosp">R$ 0</td><td id="sum-meta-hosp" style="color:rgba(255,255,255,.4)">R$ 32.599</td><td id="sumfalta-hosp" style="color:var(--z-red)">R$ 32.599</td><td id="sumpct-hosp" style="color:var(--z-hosp)">0%</td></tr>
+  <tr style="border-left:3px solid var(--z-daycare)"><td style="color:var(--z-daycare)">Daycare</td><td id="sum-daycare">R$ 0</td><td id="sum-meta-daycare" style="color:rgba(255,255,255,.4)">R$ 46.103</td><td id="sumfalta-daycare" style="color:var(--z-red)">R$ 46.103</td><td id="sumpct-daycare" style="color:var(--z-daycare)">0%</td></tr>
+  <tr style="border-top:2px solid var(--z-gold)"><td style="font-weight:700">Ecossistema</td><td id="sum-eco" style="font-weight:700">R$ 0</td><td id="sum-meta-eco" style="color:rgba(255,255,255,.4)">R$ 107.188</td><td id="sumfalta-eco" style="color:var(--z-gold);font-weight:700">R$ 107.188</td><td id="sumpct-eco" style="color:var(--z-gold);font-weight:700">0%</td></tr>
+  <tr><td style="font-weight:700">Total Zêluz</td><td id="sum-total" style="font-weight:700">R$ 0</td><td id="sum-meta-total" style="color:rgba(255,255,255,.4)">R$ 185.890</td><td id="sumfalta-total" style="color:var(--z-gold);font-weight:700">R$ 185.890</td><td id="sumpct-total" style="color:var(--z-gold);font-weight:700">0%</td></tr>
 </table>
 </div>
 
@@ -2420,11 +2461,24 @@ tr.tot td { font-weight: 700; background: rgba(222,180,40,.06); border-top: 2px 
         <div class="mdz-voucher" id="mdz-chip-amanda"><i class="bi bi-gift"></i> <span>0 dias para o voucher</span></div>
       </div>
     </div>
-    <div class="mdz-input-card"><div class="mdz-ic-header"><div class="mdz-ic-icon" style="background:rgba(35,77,103,.08)"><i class="bi bi-people-fill" style="color:var(--z-blue)"></i></div><div><div class="mdz-ic-label">Tutores atendidos</div><span class="mdz-ic-hint">Todos que passaram por você hoje</span></div></div><div class="mdz-ic-row"><input class="mdz-ic-input" type="number" inputmode="numeric" placeholder="0" id="mdz-atendi-amanda" oninput="mdzCalc('amanda')"><span class="mdz-ic-unit">tutores</span></div></div>
-    <div class="mdz-input-card"><div class="mdz-ic-header"><div class="mdz-ic-icon" style="background:rgba(39,174,96,.08)"><i class="bi bi-bag-plus-fill" style="color:var(--z-green)"></i></div><div><div class="mdz-ic-label">Levaram algo a mais</div><span class="mdz-ic-hint">Compraram ALÉM do serviço que vieram fazer</span></div></div><div class="mdz-ic-row"><input class="mdz-ic-input" type="number" inputmode="numeric" placeholder="0" id="mdz-extra-amanda" oninput="mdzCalc('amanda')"><span class="mdz-ic-unit">extras</span></div></div>
-    <div class="mdz-input-card"><div class="mdz-ic-header"><div class="mdz-ic-icon" style="background:var(--z-gold-wash-08)"><i class="bi bi-cash-stack" style="color:var(--z-gold)"></i></div><div><div class="mdz-ic-label">Valor dos extras R$</div><span class="mdz-ic-hint">Quanto os extras valeram (upsell total)</span></div></div><div class="mdz-ic-row"><span class="mdz-ic-prefix">R$</span><input class="mdz-ic-input" type="number" inputmode="decimal" step="0.01" placeholder="0" id="mdz-valextra-amanda" oninput="mdzCalc('amanda')"></div></div>
-    <div class="mdz-input-card"><div class="mdz-ic-header"><div class="mdz-ic-icon" style="background:rgba(35,77,103,.06)"><i class="bi bi-wallet2" style="color:var(--z-blue)"></i></div><div><div class="mdz-ic-label">Total vendido hoje</div><span class="mdz-ic-hint">Valor total do dia — pega direto do sistema</span></div></div><div class="mdz-ic-row"><span class="mdz-ic-prefix">R$</span><input class="mdz-ic-input" type="number" inputmode="decimal" step="0.01" placeholder="0" id="mdz-valor-amanda" oninput="mdzCalc('amanda')"></div></div>
-    <div class="mdz-results" id="mdz-results-amanda"><div class="mdz-results-title"><i class="bi bi-lightning-charge-fill"></i> Resultado de hoje</div><div class="mdz-results-grid"><div class="mdz-result-item"><div class="mdz-result-label">Aproveitamento</div><div class="mdz-result-value" id="mdz-conv-amanda">—</div></div><div class="mdz-result-item"><div class="mdz-result-label">Ticket Médio</div><div class="mdz-result-value" id="mdz-ticket-amanda">—</div></div><div class="mdz-result-item"><div class="mdz-result-label">Ticket Extra</div><div class="mdz-result-value" id="mdz-textra-amanda">—</div></div><div class="mdz-result-item"><div class="mdz-result-label">Desperdício</div><div class="mdz-result-value" id="mdz-desp-amanda">—</div></div></div></div>
+    <div class="mdz-inputs-grid">
+      <div class="mdz-input-card"><div class="mdz-ic-header"><div class="mdz-ic-icon" style="background:rgba(35,77,103,.08)"><i class="bi bi-people-fill" style="color:var(--z-blue)"></i></div><div><div class="mdz-ic-label">Tutores</div><span class="mdz-ic-hint">Passaram hoje</span></div></div><div class="mdz-ic-row"><input class="mdz-ic-input" type="number" inputmode="numeric" placeholder="0" id="mdz-atendi-amanda" oninput="mdzCalc('amanda')"><span class="mdz-ic-unit">tutores</span></div></div>
+      <div class="mdz-input-card"><div class="mdz-ic-header"><div class="mdz-ic-icon" style="background:rgba(39,174,96,.08)"><i class="bi bi-bag-plus-fill" style="color:var(--z-green)"></i></div><div><div class="mdz-ic-label">Extras</div><span class="mdz-ic-hint">Levaram algo a mais</span></div></div><div class="mdz-ic-row"><input class="mdz-ic-input" type="number" inputmode="numeric" placeholder="0" id="mdz-extra-amanda" oninput="mdzCalc('amanda')"><span class="mdz-ic-unit">extras</span></div></div>
+      <div class="mdz-input-card"><div class="mdz-ic-header"><div class="mdz-ic-icon" style="background:var(--z-gold-wash-08)"><i class="bi bi-cash-stack" style="color:var(--z-gold)"></i></div><div><div class="mdz-ic-label">Valor extras</div><span class="mdz-ic-hint">Total dos upsells</span></div></div><div class="mdz-ic-row"><span class="mdz-ic-prefix">R$</span><input class="mdz-ic-input" type="number" inputmode="decimal" step="0.01" placeholder="0" id="mdz-valextra-amanda" oninput="mdzCalc('amanda')"></div></div>
+      <div class="mdz-input-card"><div class="mdz-ic-header"><div class="mdz-ic-icon" style="background:rgba(35,77,103,.06)"><i class="bi bi-wallet2" style="color:var(--z-blue)"></i></div><div><div class="mdz-ic-label">Total do dia</div><span class="mdz-ic-hint">Do sistema</span></div></div><div class="mdz-ic-row"><span class="mdz-ic-prefix">R$</span><input class="mdz-ic-input" type="number" inputmode="decimal" step="0.01" placeholder="0" id="mdz-valor-amanda" oninput="mdzCalc('amanda')"></div></div>
+    </div>
+    <div class="mdz-results" id="mdz-results-amanda">
+      <div class="mdz-desp-hero" id="mdz-desp-hero-amanda">
+        <div class="mdz-desp-chip" id="mdz-desp-chip-amanda">Oportunidade não capturada</div>
+        <div class="mdz-desp-num" id="mdz-desp-amanda">—</div>
+        <div class="mdz-desp-sub" id="mdz-desp-sub-amanda">Tutores que saíram sem extras</div>
+      </div>
+      <div class="mdz-metrics-row">
+        <div class="mdz-metric"><div class="mdz-metric-label">Aproveitamento</div><div class="mdz-metric-value" id="mdz-conv-amanda">—</div></div>
+        <div class="mdz-metric"><div class="mdz-metric-label">Ticket Médio</div><div class="mdz-metric-value" id="mdz-ticket-amanda">—</div></div>
+        <div class="mdz-metric"><div class="mdz-metric-label">Ticket Extra</div><div class="mdz-metric-value" id="mdz-textra-amanda">—</div></div>
+      </div>
+    </div>
     <div class="mdz-streak"><div class="mdz-streak-header"><span class="mdz-streak-title">Sequência do mês</span><span class="mdz-streak-count" id="mdz-streak-amanda">0 / 24 dias</span></div><div class="mdz-streak-dots" id="mdz-dots-amanda"></div></div>
     <button class="mdz-save-btn" id="mdz-save-amanda" onclick="mdzSave('amanda')"><i class="bi bi-check-circle-fill"></i> Salvar meu dia</button>
   </div>
@@ -2721,11 +2775,24 @@ tr.tot td { font-weight: 700; background: rgba(222,180,40,.06); border-top: 2px 
         <div class="mdz-voucher" id="mdz-chip-fernanda"><i class="bi bi-gift"></i> <span>0 dias para o voucher</span></div>
       </div>
     </div>
-    <div class="mdz-input-card"><div class="mdz-ic-header"><div class="mdz-ic-icon" style="background:rgba(35,77,103,.08)"><i class="bi bi-people-fill" style="color:var(--z-blue)"></i></div><div><div class="mdz-ic-label">Tutores atendidos</div><span class="mdz-ic-hint">Todos que passaram por você hoje</span></div></div><div class="mdz-ic-row"><input class="mdz-ic-input" type="number" inputmode="numeric" placeholder="0" id="mdz-atendi-fernanda" oninput="mdzCalc('fernanda')"><span class="mdz-ic-unit">tutores</span></div></div>
-    <div class="mdz-input-card"><div class="mdz-ic-header"><div class="mdz-ic-icon" style="background:rgba(39,174,96,.08)"><i class="bi bi-bag-plus-fill" style="color:var(--z-green)"></i></div><div><div class="mdz-ic-label">Levaram algo a mais</div><span class="mdz-ic-hint">Compraram ALÉM do serviço que vieram fazer</span></div></div><div class="mdz-ic-row"><input class="mdz-ic-input" type="number" inputmode="numeric" placeholder="0" id="mdz-extra-fernanda" oninput="mdzCalc('fernanda')"><span class="mdz-ic-unit">extras</span></div></div>
-    <div class="mdz-input-card"><div class="mdz-ic-header"><div class="mdz-ic-icon" style="background:var(--z-gold-wash-08)"><i class="bi bi-cash-stack" style="color:var(--z-gold)"></i></div><div><div class="mdz-ic-label">Valor dos extras R$</div><span class="mdz-ic-hint">Quanto os extras valeram (upsell total)</span></div></div><div class="mdz-ic-row"><span class="mdz-ic-prefix">R$</span><input class="mdz-ic-input" type="number" inputmode="decimal" step="0.01" placeholder="0" id="mdz-valextra-fernanda" oninput="mdzCalc('fernanda')"></div></div>
-    <div class="mdz-input-card"><div class="mdz-ic-header"><div class="mdz-ic-icon" style="background:rgba(35,77,103,.06)"><i class="bi bi-wallet2" style="color:var(--z-blue)"></i></div><div><div class="mdz-ic-label">Total vendido hoje</div><span class="mdz-ic-hint">Valor total do dia — pega direto do sistema</span></div></div><div class="mdz-ic-row"><span class="mdz-ic-prefix">R$</span><input class="mdz-ic-input" type="number" inputmode="decimal" step="0.01" placeholder="0" id="mdz-valor-fernanda" oninput="mdzCalc('fernanda')"></div></div>
-    <div class="mdz-results" id="mdz-results-fernanda"><div class="mdz-results-title"><i class="bi bi-lightning-charge-fill"></i> Resultado de hoje</div><div class="mdz-results-grid"><div class="mdz-result-item"><div class="mdz-result-label">Aproveitamento</div><div class="mdz-result-value" id="mdz-conv-fernanda">—</div></div><div class="mdz-result-item"><div class="mdz-result-label">Ticket Médio</div><div class="mdz-result-value" id="mdz-ticket-fernanda">—</div></div><div class="mdz-result-item"><div class="mdz-result-label">Ticket Extra</div><div class="mdz-result-value" id="mdz-textra-fernanda">—</div></div><div class="mdz-result-item"><div class="mdz-result-label">Desperdício</div><div class="mdz-result-value" id="mdz-desp-fernanda">—</div></div></div></div>
+    <div class="mdz-inputs-grid">
+      <div class="mdz-input-card"><div class="mdz-ic-header"><div class="mdz-ic-icon" style="background:rgba(35,77,103,.08)"><i class="bi bi-people-fill" style="color:var(--z-blue)"></i></div><div><div class="mdz-ic-label">Tutores</div><span class="mdz-ic-hint">Passaram hoje</span></div></div><div class="mdz-ic-row"><input class="mdz-ic-input" type="number" inputmode="numeric" placeholder="0" id="mdz-atendi-fernanda" oninput="mdzCalc('fernanda')"><span class="mdz-ic-unit">tutores</span></div></div>
+      <div class="mdz-input-card"><div class="mdz-ic-header"><div class="mdz-ic-icon" style="background:rgba(39,174,96,.08)"><i class="bi bi-bag-plus-fill" style="color:var(--z-green)"></i></div><div><div class="mdz-ic-label">Extras</div><span class="mdz-ic-hint">Levaram algo a mais</span></div></div><div class="mdz-ic-row"><input class="mdz-ic-input" type="number" inputmode="numeric" placeholder="0" id="mdz-extra-fernanda" oninput="mdzCalc('fernanda')"><span class="mdz-ic-unit">extras</span></div></div>
+      <div class="mdz-input-card"><div class="mdz-ic-header"><div class="mdz-ic-icon" style="background:var(--z-gold-wash-08)"><i class="bi bi-cash-stack" style="color:var(--z-gold)"></i></div><div><div class="mdz-ic-label">Valor extras</div><span class="mdz-ic-hint">Total dos upsells</span></div></div><div class="mdz-ic-row"><span class="mdz-ic-prefix">R$</span><input class="mdz-ic-input" type="number" inputmode="decimal" step="0.01" placeholder="0" id="mdz-valextra-fernanda" oninput="mdzCalc('fernanda')"></div></div>
+      <div class="mdz-input-card"><div class="mdz-ic-header"><div class="mdz-ic-icon" style="background:rgba(35,77,103,.06)"><i class="bi bi-wallet2" style="color:var(--z-blue)"></i></div><div><div class="mdz-ic-label">Total do dia</div><span class="mdz-ic-hint">Do sistema</span></div></div><div class="mdz-ic-row"><span class="mdz-ic-prefix">R$</span><input class="mdz-ic-input" type="number" inputmode="decimal" step="0.01" placeholder="0" id="mdz-valor-fernanda" oninput="mdzCalc('fernanda')"></div></div>
+    </div>
+    <div class="mdz-results" id="mdz-results-fernanda">
+      <div class="mdz-desp-hero" id="mdz-desp-hero-fernanda">
+        <div class="mdz-desp-chip" id="mdz-desp-chip-fernanda">Oportunidade não capturada</div>
+        <div class="mdz-desp-num" id="mdz-desp-fernanda">—</div>
+        <div class="mdz-desp-sub" id="mdz-desp-sub-fernanda">Tutores que saíram sem extras</div>
+      </div>
+      <div class="mdz-metrics-row">
+        <div class="mdz-metric"><div class="mdz-metric-label">Aproveitamento</div><div class="mdz-metric-value" id="mdz-conv-fernanda">—</div></div>
+        <div class="mdz-metric"><div class="mdz-metric-label">Ticket Médio</div><div class="mdz-metric-value" id="mdz-ticket-fernanda">—</div></div>
+        <div class="mdz-metric"><div class="mdz-metric-label">Ticket Extra</div><div class="mdz-metric-value" id="mdz-textra-fernanda">—</div></div>
+      </div>
+    </div>
     <div class="mdz-streak"><div class="mdz-streak-header"><span class="mdz-streak-title">Sequência do mês</span><span class="mdz-streak-count" id="mdz-streak-fernanda">0 / 24 dias</span></div><div class="mdz-streak-dots" id="mdz-dots-fernanda"></div></div>
     <button class="mdz-save-btn" id="mdz-save-fernanda" onclick="mdzSave('fernanda')"><i class="bi bi-check-circle-fill"></i> Salvar meu dia</button>
   </div>
@@ -2912,11 +2979,24 @@ tr.tot td { font-weight: 700; background: rgba(222,180,40,.06); border-top: 2px 
         <div class="mdz-voucher" id="mdz-chip-joyce"><i class="bi bi-gift"></i> <span>0 dias para o voucher</span></div>
       </div>
     </div>
-    <div class="mdz-input-card"><div class="mdz-ic-header"><div class="mdz-ic-icon" style="background:rgba(35,77,103,.08)"><i class="bi bi-people-fill" style="color:var(--z-blue)"></i></div><div><div class="mdz-ic-label">Tutores atendidos</div><span class="mdz-ic-hint">Todos que passaram por você hoje</span></div></div><div class="mdz-ic-row"><input class="mdz-ic-input" type="number" inputmode="numeric" placeholder="0" id="mdz-atendi-joyce" oninput="mdzCalc('joyce')"><span class="mdz-ic-unit">tutores</span></div></div>
-    <div class="mdz-input-card"><div class="mdz-ic-header"><div class="mdz-ic-icon" style="background:rgba(39,174,96,.08)"><i class="bi bi-bag-plus-fill" style="color:var(--z-green)"></i></div><div><div class="mdz-ic-label">Levaram algo a mais</div><span class="mdz-ic-hint">Compraram ALÉM do serviço que vieram fazer</span></div></div><div class="mdz-ic-row"><input class="mdz-ic-input" type="number" inputmode="numeric" placeholder="0" id="mdz-extra-joyce" oninput="mdzCalc('joyce')"><span class="mdz-ic-unit">extras</span></div></div>
-    <div class="mdz-input-card"><div class="mdz-ic-header"><div class="mdz-ic-icon" style="background:var(--z-gold-wash-08)"><i class="bi bi-cash-stack" style="color:var(--z-gold)"></i></div><div><div class="mdz-ic-label">Valor dos extras R$</div><span class="mdz-ic-hint">Quanto os extras valeram (upsell total)</span></div></div><div class="mdz-ic-row"><span class="mdz-ic-prefix">R$</span><input class="mdz-ic-input" type="number" inputmode="decimal" step="0.01" placeholder="0" id="mdz-valextra-joyce" oninput="mdzCalc('joyce')"></div></div>
-    <div class="mdz-input-card"><div class="mdz-ic-header"><div class="mdz-ic-icon" style="background:rgba(35,77,103,.06)"><i class="bi bi-wallet2" style="color:var(--z-blue)"></i></div><div><div class="mdz-ic-label">Total vendido hoje</div><span class="mdz-ic-hint">Valor total do dia — pega direto do sistema</span></div></div><div class="mdz-ic-row"><span class="mdz-ic-prefix">R$</span><input class="mdz-ic-input" type="number" inputmode="decimal" step="0.01" placeholder="0" id="mdz-valor-joyce" oninput="mdzCalc('joyce')"></div></div>
-    <div class="mdz-results" id="mdz-results-joyce"><div class="mdz-results-title"><i class="bi bi-lightning-charge-fill"></i> Resultado de hoje</div><div class="mdz-results-grid"><div class="mdz-result-item"><div class="mdz-result-label">Aproveitamento</div><div class="mdz-result-value" id="mdz-conv-joyce">—</div></div><div class="mdz-result-item"><div class="mdz-result-label">Ticket Médio</div><div class="mdz-result-value" id="mdz-ticket-joyce">—</div></div><div class="mdz-result-item"><div class="mdz-result-label">Ticket Extra</div><div class="mdz-result-value" id="mdz-textra-joyce">—</div></div><div class="mdz-result-item"><div class="mdz-result-label">Desperdício</div><div class="mdz-result-value" id="mdz-desp-joyce">—</div></div></div></div>
+    <div class="mdz-inputs-grid">
+      <div class="mdz-input-card"><div class="mdz-ic-header"><div class="mdz-ic-icon" style="background:rgba(35,77,103,.08)"><i class="bi bi-people-fill" style="color:var(--z-blue)"></i></div><div><div class="mdz-ic-label">Tutores</div><span class="mdz-ic-hint">Passaram hoje</span></div></div><div class="mdz-ic-row"><input class="mdz-ic-input" type="number" inputmode="numeric" placeholder="0" id="mdz-atendi-joyce" oninput="mdzCalc('joyce')"><span class="mdz-ic-unit">tutores</span></div></div>
+      <div class="mdz-input-card"><div class="mdz-ic-header"><div class="mdz-ic-icon" style="background:rgba(39,174,96,.08)"><i class="bi bi-bag-plus-fill" style="color:var(--z-green)"></i></div><div><div class="mdz-ic-label">Extras</div><span class="mdz-ic-hint">Levaram algo a mais</span></div></div><div class="mdz-ic-row"><input class="mdz-ic-input" type="number" inputmode="numeric" placeholder="0" id="mdz-extra-joyce" oninput="mdzCalc('joyce')"><span class="mdz-ic-unit">extras</span></div></div>
+      <div class="mdz-input-card"><div class="mdz-ic-header"><div class="mdz-ic-icon" style="background:var(--z-gold-wash-08)"><i class="bi bi-cash-stack" style="color:var(--z-gold)"></i></div><div><div class="mdz-ic-label">Valor extras</div><span class="mdz-ic-hint">Total dos upsells</span></div></div><div class="mdz-ic-row"><span class="mdz-ic-prefix">R$</span><input class="mdz-ic-input" type="number" inputmode="decimal" step="0.01" placeholder="0" id="mdz-valextra-joyce" oninput="mdzCalc('joyce')"></div></div>
+      <div class="mdz-input-card"><div class="mdz-ic-header"><div class="mdz-ic-icon" style="background:rgba(35,77,103,.06)"><i class="bi bi-wallet2" style="color:var(--z-blue)"></i></div><div><div class="mdz-ic-label">Total do dia</div><span class="mdz-ic-hint">Do sistema</span></div></div><div class="mdz-ic-row"><span class="mdz-ic-prefix">R$</span><input class="mdz-ic-input" type="number" inputmode="decimal" step="0.01" placeholder="0" id="mdz-valor-joyce" oninput="mdzCalc('joyce')"></div></div>
+    </div>
+    <div class="mdz-results" id="mdz-results-joyce">
+      <div class="mdz-desp-hero" id="mdz-desp-hero-joyce">
+        <div class="mdz-desp-chip" id="mdz-desp-chip-joyce">Oportunidade não capturada</div>
+        <div class="mdz-desp-num" id="mdz-desp-joyce">—</div>
+        <div class="mdz-desp-sub" id="mdz-desp-sub-joyce">Tutores que saíram sem extras</div>
+      </div>
+      <div class="mdz-metrics-row">
+        <div class="mdz-metric"><div class="mdz-metric-label">Aproveitamento</div><div class="mdz-metric-value" id="mdz-conv-joyce">—</div></div>
+        <div class="mdz-metric"><div class="mdz-metric-label">Ticket Médio</div><div class="mdz-metric-value" id="mdz-ticket-joyce">—</div></div>
+        <div class="mdz-metric"><div class="mdz-metric-label">Ticket Extra</div><div class="mdz-metric-value" id="mdz-textra-joyce">—</div></div>
+      </div>
+    </div>
     <div class="mdz-streak"><div class="mdz-streak-header"><span class="mdz-streak-title">Sequência do mês</span><span class="mdz-streak-count" id="mdz-streak-joyce">0 / 24 dias</span></div><div class="mdz-streak-dots" id="mdz-dots-joyce"></div></div>
     <button class="mdz-save-btn" id="mdz-save-joyce" onclick="mdzSave('joyce')"><i class="bi bi-check-circle-fill"></i> Salvar meu dia</button>
   </div>
@@ -3218,6 +3298,7 @@ var METAS = getMetas();
 var ECO_BASE = getEcoBase(), TOTAL_BASE = getTotalBase(), SPA_BASE = getSpaBase();
 function reloadMonthVars(){
   METAS = getMetas(); ECO_BASE = getEcoBase(); TOTAL_BASE = getTotalBase(); SPA_BASE = getSpaBase();
+  POUP = getMonthConfig().poupanca;
 }
 
 function parseNum(v){ if(!v) return 0; return parseFloat(v.replace(/[^\d.,]/g,'').replace(/\./g,'').replace(',','.'))||0; }
@@ -4066,6 +4147,93 @@ setInterval(function(){
 </script>
 
 <script>
+/* ===== RENDER TRACKERS (dinâmico por mês) ===== */
+function renderTrackers(){
+  var M = getMonthConfig().metas;
+  function f(n){ return 'R$ '+Math.round(n).toLocaleString('pt-BR'); }
+
+  var tDefs = [
+    {area:'extras',name:'Extras SPA Dermoprotetor',color:'var(--z-spa)',border:'var(--z-spa)'},
+    {area:'banho',name:'Banho SPA Dermoprotetor',color:'var(--z-spa)',border:'var(--z-spa)'},
+    {area:'emporio',name:'Empório',color:'var(--z-emporio)',border:'var(--z-emporio)'},
+    {area:'vet',name:'Veterinária',color:'var(--z-vetcare)',border:'var(--z-vetcare)'},
+    {area:'hosp',name:'Hospedagem',color:'var(--z-hosp)',border:'var(--z-hosp)'},
+    {area:'daycare',name:'Daycare',color:'var(--z-daycare)',border:'var(--z-daycare)'}
+  ];
+
+  var h = '';
+  tDefs.forEach(function(td){
+    var m = M[td.area];
+    h += '<div class="tracker" style="border-left:3px solid '+td.border+'">';
+    h += '<h3>'+td.name+' <span class="badge" style="background:'+td.color+'">Meta Cuidado: '+f(m.base)+'</span></h3>';
+    h += '<div class="tracker-grid"><div class="hd"></div>';
+    for(var s=1;s<=5;s++) h += '<div class="hd">Sem '+s+'</div>';
+    h += '<div class="hd">Total</div><div class="lbl">R$ vendido</div>';
+    for(var s=1;s<=5;s++) h += '<input data-area="'+td.area+'" data-sem="'+s+'" oninput="calc()">';
+    h += '<div class="total-cell" id="total-'+td.area+'">R$ 0</div></div>';
+    h += '<div class="progress-multi">';
+    var levels = [{k:'Base',label:'Cuidado',style:'cuidado',color:'var(--z-meta-cuidado-text)',border:'var(--z-meta-cuidado)',bg:'',v:m.base},
+                  {k:'Alvo',label:'Zêlo',style:'',color:'var(--z-blue)',border:'var(--z-blue)',bg:'background:linear-gradient(90deg,var(--z-blue),#3a6d87)',v:m.alvo},
+                  {k:'Ouro',label:'Encanto',style:'',color:'var(--z-gold)',border:'var(--z-gold)',bg:'background:linear-gradient(90deg,var(--z-gold),var(--z-gold-light))',v:m.ouro}];
+    levels.forEach(function(lv){
+      var lk = lv.k.toLowerCase(); var A = td.area;
+      h += '<div class="progress-level '+lv.style+'" style="border-color:'+lv.border+'">';
+      h += '<div class="level-header"><span class="level-name" style="color:'+lv.color+'">'+lv.label+'</span><span class="level-pct" id="pct'+lv.k+'-'+A+'">0%</span></div>';
+      h += '<div class="bar-bg"><div class="bar-fill '+lv.style+'"'+(lv.bg?' style="'+lv.bg+';width:0%"':' style="width:0%"')+' id="bar'+lv.k+'-'+A+'"></div></div>';
+      h += '<div class="level-footer"><span>Meta: '+f(lv.v)+'</span><span id="falta'+lv.k+'-'+A+'"><span class="falta">Falta: '+f(lv.v)+'</span></span></div>';
+      h += '</div>';
+    });
+    h += '</div></div>';
+  });
+
+  var container = document.getElementById('trackers-container');
+  if(container){
+    /* preserve first child (the section header) — it's not inside trackers-container in this version */
+    container.innerHTML = h;
+  }
+}
+
+/* ===== UPDATE META LABELS (KPI + Resumo) ===== */
+function updateMetaLabels(){
+  var M = getMonthConfig().metas;
+  var ECO = getMonthConfig().ecoBase;
+  var TOT = getMonthConfig().totalBase;
+  var SPA = getMonthConfig().spaBase;
+  function f(n){ return 'R$ '+Math.round(n).toLocaleString('pt-BR'); }
+
+  /* KPI cards */
+  elSet('kpi-meta-eco', f(ECO));
+  elSet('kpi-meta-spa', f(SPA));
+  elSet('kpi-meta-emp', f(M.emporio.base));
+  elSet('kpi-meta-vet', f(M.vet.base));
+
+  /* Resumo Acumulado meta column */
+  elSet('sum-meta-extras', f(M.extras.base));
+  elSet('sum-meta-banho', f(M.banho.base));
+  elSet('sum-meta-emporio', f(M.emporio.base));
+  elSet('sum-meta-vet', f(M.vet.base));
+  elSet('sum-meta-hosp', f(M.hosp.base));
+  elSet('sum-meta-daycare', f(M.daycare.base));
+  elSet('sum-meta-eco', f(ECO));
+  elSet('sum-meta-total', f(TOT));
+
+  /* Sumfalta initial reset (will be overridden by calc) */
+  elSet('sumfalta-extras', f(M.extras.base));
+  elSet('sumfalta-banho', f(M.banho.base));
+  elSet('sumfalta-emporio', f(M.emporio.base));
+  elSet('sumfalta-vet', f(M.vet.base));
+  elSet('sumfalta-hosp', f(M.hosp.base));
+  elSet('sumfalta-daycare', f(M.daycare.base));
+  elSet('sumfalta-eco', f(ECO));
+  elSet('sumfalta-total', f(TOT));
+
+  /* KPI falta initial reset */
+  elSet('kpi-eco-falta', 'Falta: '+f(ECO));
+  elSet('kpi-spa-falta', 'Falta: '+f(SPA));
+  elSet('kpi-emp-falta', 'Falta: '+f(M.emporio.base));
+  elSet('kpi-vet-falta', 'Falta: '+f(M.vet.base));
+}
+
 /* ===== RENDER ETAPA TABLE + CALENDAR GRID ===== */
 function renderEtapaTable(){
   var mc = getMonthConfig();
@@ -4271,7 +4439,10 @@ function trocarMes(mes){
   renderCalendar();
   renderCalendarGrid();
   renderEtapaTable();
+  renderTrackers();
+  updateMetaLabels();
   renderMetasMes();
+  carregar();
   calc();
   /* Recarregar Firestore do novo mês */
   if(currentUser) carregarDadosFirestore();
@@ -4298,6 +4469,8 @@ document.addEventListener('DOMContentLoaded', function(){
   if(currentUser && currentUser.role === 'consultor'){
     if(sel) sel.style.display = 'none';
   }
+  renderTrackers();
+  updateMetaLabels();
   renderMetasMes();
   renderCalendarGrid();
   renderEtapaTable();
@@ -4766,16 +4939,41 @@ function mdzCalc(person){
   var desp = ticketExtra * naoCompraram;
 
   var convEl = document.getElementById('mdz-conv-'+person);
-  if(convEl){ convEl.textContent = aprov.toFixed(0)+'%'; convEl.className = 'mdz-result-value '+(aprov>=40?'good':aprov>=25?'warn':'bad'); }
+  if(convEl){ convEl.textContent = aprov.toFixed(0)+'%'; convEl.className = 'mdz-metric-value '+(aprov>=40?'good':aprov>=25?'warn':'bad'); }
 
   var tickEl = document.getElementById('mdz-ticket-'+person);
-  if(tickEl){ tickEl.textContent = 'R$'+ticket.toFixed(0); tickEl.className = 'mdz-result-value '+(ticket>=100?'good':''); }
+  if(tickEl){ tickEl.textContent = 'R$'+ticket.toFixed(0); tickEl.className = 'mdz-metric-value '+(ticket>=100?'good':''); }
 
   var texEl = document.getElementById('mdz-textra-'+person);
-  if(texEl){ texEl.textContent = extra>0?'R$'+ticketExtra.toFixed(0):'—'; texEl.className = 'mdz-result-value'; }
+  if(texEl){ texEl.textContent = extra>0?'R$'+ticketExtra.toFixed(0):'—'; texEl.className = 'mdz-metric-value'; }
 
-  var despEl = document.getElementById('mdz-desp-'+person);
-  if(despEl){ despEl.textContent = desp>0?'R$'+desp.toFixed(0):'—'; despEl.className = 'mdz-result-value '+(desp>500?'bad':desp>0?'warn':''); }
+  /* HERO Desperdício */
+  var hero = document.getElementById('mdz-desp-hero-'+person);
+  var despNum = document.getElementById('mdz-desp-'+person);
+  var despSub = document.getElementById('mdz-desp-sub-'+person);
+  var despChip = document.getElementById('mdz-desp-chip-'+person);
+  var naoComp = Math.max(0, atendi - extra);
+  if(hero && despNum){
+    if(desp > 0){
+      despNum.textContent = 'R$ '+desp.toFixed(0);
+      despNum.className = 'mdz-desp-num';
+      hero.className = 'mdz-desp-hero';
+      if(despChip){ despChip.textContent = 'Oportunidade não capturada'; despChip.className = 'mdz-desp-chip'; }
+      if(despSub) despSub.textContent = naoComp+' tutor'+(naoComp!==1?'es':'')+(naoComp>0?' saíram sem extra':' saíram sem extra');
+    } else if(atendi > 0 && extra > 0 && naoComp === 0){
+      despNum.textContent = 'R$ 0';
+      despNum.className = 'mdz-desp-num zero';
+      hero.className = 'mdz-desp-hero zero';
+      if(despChip){ despChip.textContent = 'Todos compraram extras!'; despChip.className = 'mdz-desp-chip zero'; }
+      if(despSub) despSub.textContent = 'Perfeito — 100% de aproveitamento hoje';
+    } else {
+      despNum.textContent = '—';
+      despNum.className = 'mdz-desp-num';
+      hero.className = 'mdz-desp-hero';
+      if(despChip){ despChip.textContent = 'Oportunidade não capturada'; despChip.className = 'mdz-desp-chip'; }
+      if(despSub) despSub.textContent = 'Preencha valor dos extras para calcular';
+    }
+  }
 }
 
 /* SAVE — salva no Firebase */
