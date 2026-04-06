@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Meu Dia Zeloso — Zêluz</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --gold:#DEB428;
+  --gold-soft:rgba(222,180,40,.10);
+  --gold-mid:rgba(222,180,40,.20);
+  --blue:#234D67;
+  --blue-deep:#1A3A4F;
+  --blue-soft:rgba(35,77,103,.07);
+  --cream:#FFFDF6;
+  --white:#FFFFFF;
+  --black:#1D1E1C;
+  --gray-200:#EEEDE9;
+  --gray-400:#B5B4B0;
+  --gray-500:#8A8985;
+  --green:#27AE60;
+  --green-soft:rgba(39,174,96,.10);
+  --red:#C0392B;
+  --red-soft:rgba(192,57,43,.08);
+  --font:'Poppins',system-ui,sans-serif;
+  --r-sm:12px;--r:16px;--r-lg:20px;--r-xl:24px;
+  --shadow-sm:0 1px 4px rgba(35,77,103,.06);
+  --shadow:0 4px 20px rgba(35,77,103,.08);
+  --shadow-lg:0 8px 32px rgba(35,77,103,.12);
+}
+html{font-size:16px;-webkit-tap-highlight-color:transparent}
+body{font-family:var(--font);background:var(--cream);color:var(--black);min-height:100dvh}
+
+/* ════════ HEADER ════════ */
+.app-header{
+  background:var(--blue-deep);
+  padding:20px 20px 0;
+  position:sticky;top:0;z-index:60;
+}
+.header-top{
+  display:flex;align-items:flex-start;justify-content:space-between;
+  padding-bottom:18px;
+}
+.header-brand{
+  font-size:.6rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(255,253,246,.35);margin-bottom:4px;
+}
+.header-title{
+  font-size:1.25rem;font-weight:800;color:var(--white);line-height:1.1;
+}
+.header-sub{font-size:.7rem;font-weight:400;color:rgba(255,253,246,.4);margin-top:3px}
+.header-badge{
+  background:var(--gold-mid);border:1.5px solid rgba(222,180,40,.35);
+  border-radius:8px;padding:4px 10px;
+  font-size:.65rem;font-weight:700;color:var(--gold);letter-spacing:.04em;
+  white-space:nowrap;
+}
+
+/* ════════ TABS ════════ */
+.tabs{
+  display:flex;gap:0;
+  border-top:1px solid rgba(255,255,255,.06);
+}
+.tab{
+  flex:1;position:relative;
+  padding:13px 4px 11px;
+  text-align:center;cursor:pointer;
+  color:rgba(255,253,246,.4);
+  font-size:.72rem;font-weight:600;
+  transition:color .2s;
+  border-bottom:2.5px solid transparent;
+}
+.tab .t-icon{font-size:1.1rem;display:block;margin-bottom:3px}
+.tab.active{color:var(--gold);border-bottom-color:var(--gold)}
+.tab.active .t-icon{color:var(--gold)}
+
+/* ════════ MAIN ════════ */
+.main{max-width:440px;margin:0 auto;padding:24px 16px 120px}
+
+/* ════════ VIEW CONTAINER ════════ */
+.view{display:none}
+.view.active{display:block}
+
+/* ════════ DATE NAV ════════ */
+.date-nav{
+  display:flex;align-items:center;justify-content:center;gap:16px;
+  margin-bottom:24px;
+}
+.date-arrow{
+  width:40px;height:40px;border-radius:50%;
+  background:var(--white);border:1.5px solid var(--blue-soft);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;color:var(--blue);font-size:1.1rem;
+  box-shadow:var(--shadow-sm);transition:all .15s;
+}
+.date-arrow:active{background:var(--gold-soft);border-color:var(--gold)}
+.date-center{text-align:center}
+.date-value{font-size:.92rem;font-weight:700;color:var(--blue)}
+.date-dow{font-size:.7rem;color:var(--gray-400);font-weight:500;margin-top:1px}
+
+/* ════════ COUNTER CARD ════════ */
+.counter-card{
+  background:var(--white);border-radius:var(--r-xl);
+  box-shadow:var(--shadow);
+  padding:24px 24px 20px;
+  margin-bottom:20px;
+  display:flex;align-items:center;gap:20px;
+  border:1.5px solid var(--blue-soft);
+}
+.counter-ring-wrap{flex-shrink:0;position:relative;width:82px;height:82px}
+.counter-ring-svg{width:82px;height:82px;transform:rotate(-90deg)}
+.ring-bg{fill:none;stroke:var(--gray-200);stroke-width:7}
+.ring-fill{
+  fill:none;stroke:var(--gold);stroke-width:7;
+  stroke-linecap:round;
+  transition:stroke-dashoffset .6s cubic-bezier(.4,0,.2,1);
+}
+.counter-inner{
+  position:absolute;inset:0;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+}
+.counter-num{font-size:1.3rem;font-weight:800;color:var(--blue);line-height:1}
+.counter-denom{font-size:.6rem;font-weight:600;color:var(--gray-400)}
+.counter-info{flex:1;min-width:0}
+.counter-label{
+  font-size:.62rem;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--gray-400);margin-bottom:6px;
+}
+.counter-msg{font-size:.9rem;font-weight:700;color:var(--blue);line-height:1.3}
+.counter-sub{font-size:.72rem;color:var(--gray-400);margin-top:4px}
+.voucher-chip{
+  display:inline-flex;align-items:center;gap:5px;
+  background:var(--gold-soft);border:1px solid var(--gold-mid);
+  border-radius:20px;padding:4px 10px;
+  font-size:.68rem;font-weight:700;color:#B8940E;
+  margin-top:8px;
+}
+
+/* ════════ INPUT GRID ════════ */
+.input-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:16px}
+
+/* ════════ INPUT CARDS ════════ */
+.input-card{
+  background:var(--white);border-radius:var(--r-lg);
+  box-shadow:var(--shadow-sm);border:1.5px solid var(--blue-soft);
+  padding:16px;margin-bottom:0;
+  transition:border-color .2s,box-shadow .2s;
+}
+.input-card:focus-within{
+  border-color:var(--gold);
+  box-shadow:0 0 0 3px var(--gold-soft), var(--shadow);
+}
+.ic-header{display:flex;flex-direction:column;align-items:center;gap:8px;margin-bottom:12px;text-align:center}
+.ic-icon{
+  width:40px;height:40px;border-radius:var(--r-sm);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.2rem;flex-shrink:0;
+}
+.ic-label{font-size:.72rem;font-weight:700;color:var(--blue)}
+.ic-hint{font-size:.62rem;color:var(--gray-400);font-weight:400;display:block;margin-top:2px}
+.ic-input-row{display:flex;align-items:baseline;gap:4px;justify-content:center}
+.ic-prefix{font-size:.9rem;font-weight:600;color:var(--gray-400)}
+.ic-input{
+  flex:1;border:none;outline:none;
+  font-family:var(--font);
+  font-size:1.8rem;font-weight:800;color:var(--black);
+  background:transparent;
+  -moz-appearance:textfield;min-width:0;
+  letter-spacing:-.02em;
+  text-align:center;
+  max-width:120px;
+}
+.ic-unit{font-size:.7rem !important}
+.ic-input::-webkit-outer-spin-button,
+.ic-input::-webkit-inner-spin-button{-webkit-appearance:none}
+.ic-input::placeholder{color:var(--gray-200);font-weight:700}
+.ic-unit{font-size:.9rem;font-weight:600;color:var(--gray-400);align-self:flex-end;padding-bottom:8px}
+
+/* ════════ RESULTS ════════ */
+.results-card{
+  background:var(--white);border-radius:var(--r-lg);
+  border:1.5px solid var(--gold-mid);
+  box-shadow:0 4px 16px var(--gold-soft);
+  padding:20px;margin-bottom:12px;
+  border-left:4px solid var(--gold);
+}
+.results-title{
+  font-size:.62rem;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--gold);margin-bottom:14px;
+  display:flex;align-items:center;gap:6px;
+}
+.results-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+.result-item{text-align:center}
+.result-label{font-size:.6rem;font-weight:600;color:var(--gray-400);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.result-value{font-size:1.2rem;font-weight:800;color:var(--blue)}
+.result-value.good{color:var(--green)}
+.result-value.warn{color:#E67E22}
+.result-value.bad{color:var(--red)}
+.result-divider{width:1px;background:var(--blue-soft)}
+
+/* ════════ STREAK BAR ════════ */
+.streak-section{margin-bottom:20px}
+.streak-header{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:10px;
+}
+.streak-title{font-size:.72rem;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.06em}
+.streak-count{font-size:.72rem;font-weight:700;color:var(--gold)}
+.streak-dots{
+  display:flex;flex-wrap:wrap;gap:5px;
+  padding:4px 0;
+}
+.streak-dot{
+  width:26px;height:26px;border-radius:8px;
+  background:var(--gray-200);
+  transition:all .3s;
+  border:1.5px solid rgba(35,77,103,.08);
+}
+.streak-dot.filled{background:var(--gold);border-color:var(--gold);box-shadow:0 2px 6px rgba(222,180,40,.3)}
+.streak-dot.today{outline:2.5px solid var(--gold);outline-offset:2px}
+
+/* ════════ CELEBRATE ════════ */
+.celebrate{
+  position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(0);
+  background:var(--white);border-radius:var(--r-xl);
+  box-shadow:var(--shadow-lg);
+  padding:32px 28px;text-align:center;
+  z-index:500;opacity:0;
+  transition:all .35s cubic-bezier(.34,1.56,.64,1);
+  max-width:320px;width:90%;
+}
+.celebrate.show{transform:translate(-50%,-50%) scale(1);opacity:1}
+.celebrate-icon{font-size:2.4rem;margin-bottom:8px;color:var(--gold)}
+.celebrate-title{font-size:1.1rem;font-weight:800;color:var(--blue);margin-bottom:4px}
+.celebrate-msg{font-size:.82rem;color:var(--gray-500);line-height:1.5}
+.celebrate-overlay{
+  position:fixed;inset:0;background:rgba(0,0,0,.25);
+  z-index:499;opacity:0;transition:opacity .25s;pointer-events:none;
+}
+.celebrate-overlay.show{opacity:1;pointer-events:auto}
+
+/* ════════ SAVE BUTTON ════════ */
+.save-btn{
+  width:100%;padding:16px;border:none;
+  border-radius:var(--r);
+  background:var(--gold);color:var(--white);
+  font-family:var(--font);font-size:.92rem;font-weight:700;
+  cursor:pointer;letter-spacing:.02em;
+  box-shadow:0 4px 16px rgba(222,180,40,.35);
+  transition:all .15s;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+}
+.save-btn:active{transform:translateY(1px);box-shadow:0 2px 8px rgba(222,180,40,.25)}
+.save-btn.done{background:var(--green);box-shadow:0 4px 16px rgba(39,174,96,.3)}
+.save-btn:disabled{background:var(--gray-400);box-shadow:none;cursor:not-allowed;opacity:.6}
+
+/* ════════ DAY-OFF BANNER ════════ */
+.dayoff-banner{
+  background:var(--red-soft);border:1.5px solid rgba(192,57,43,.15);
+  border-radius:var(--r);padding:12px 16px;
+  margin-bottom:16px;text-align:center;
+  font-size:.78rem;font-weight:600;color:var(--red);
+  display:none;
+}
+.dayoff-banner.show{display:block}
+
+/* ════════ VISÃO ════════ */
+.visao-date{
+  text-align:center;font-size:.78rem;font-weight:600;color:var(--gray-400);
+  margin-bottom:20px;
+}
+.kpi-hero{
+  background:var(--blue-deep);border-radius:var(--r-xl);
+  padding:24px;margin-bottom:16px;
+  display:grid;grid-template-columns:1fr 1fr;gap:16px;
+}
+.kpi-hero .kpi{color:var(--white)}
+.kpi-hero .kpi-label{
+  font-size:.6rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;
+  color:rgba(255,253,246,.4);margin-bottom:4px;
+}
+.kpi-hero .kpi-value{font-size:1.6rem;font-weight:800;color:var(--white);line-height:1}
+.kpi-hero .kpi-value.gold{color:var(--gold)}
+.kpi-hero .kpi.full{grid-column:1/-1;padding-top:14px;border-top:1px solid rgba(255,255,255,.06)}
+
+.rank-section{background:var(--white);border-radius:var(--r-lg);box-shadow:var(--shadow-sm);border:1.5px solid var(--blue-soft);padding:20px;margin-bottom:12px}
+.rank-title{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--gray-400);margin-bottom:14px}
+.rank-row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--blue-soft)}
+.rank-row:last-child{border-bottom:none;padding-bottom:0}
+.rank-pos{
+  width:28px;height:28px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.72rem;font-weight:800;flex-shrink:0;
+}
+.rank-pos.p1{background:var(--gold);color:var(--white)}
+.rank-pos.p2{background:var(--blue-soft);color:var(--blue)}
+.rank-pos.p3{background:var(--gray-200);color:var(--gray-500)}
+.rank-name{flex:1;font-size:.82rem;font-weight:600;color:var(--blue)}
+.rank-val{font-size:.9rem;font-weight:800}
+.rank-val.good{color:var(--green)}
+.rank-val.warn{color:#E67E22}
+.rank-val.neutral{color:var(--blue)}
+.rank-val.gold{color:var(--gold)}
+
+/* ════════ EMPTY ════════ */
+.empty{text-align:center;padding:40px 0;color:var(--gray-400)}
+.empty-icon{font-size:2.2rem;margin-bottom:12px;opacity:.4}
+.empty p{font-size:.82rem;line-height:1.6}
+
+/* ════════ TOAST ════════ */
+.toast{
+  position:fixed;bottom:28px;left:50%;
+  transform:translateX(-50%) translateY(20px);
+  background:var(--blue-deep);color:var(--white);
+  padding:12px 22px;border-radius:var(--r);
+  font-size:.8rem;font-weight:600;
+  opacity:0;transition:all .25s;z-index:300;
+  white-space:nowrap;box-shadow:var(--shadow-lg);
+  pointer-events:none;
+}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+</style>
+</head>
+<body>
+
+<!-- ════ HEADER ════ -->
+<div class="app-header">
+  <div class="header-top">
+    <div>
+      <div class="header-brand">Zêluz</div>
+      <div class="header-title">Meu Dia Zeloso</div>
+      <div class="header-sub">30 segundos. Todo dia conta.</div>
+    </div>
+    <div class="header-badge" id="global-date-badge"></div>
+  </div>
+
+  <div class="tabs">
+    <div class="tab active" onclick="switchTab('fernanda')">
+      <i class="t-icon bi bi-person-fill"></i>Fernanda
+    </div>
+    <div class="tab" onclick="switchTab('joyce')">
+      <i class="t-icon bi bi-person-fill"></i>Joyce
+    </div>
+    <div class="tab" onclick="switchTab('amanda')">
+      <i class="t-icon bi bi-star-fill"></i>Amanda
+    </div>
+    <div class="tab" onclick="switchTab('visao')">
+      <i class="t-icon bi bi-bar-chart-fill"></i>Visão
+    </div>
+  </div>
+</div>
+
+<!-- ════ MAIN ════ -->
+<div class="main">
+
+<!-- ─── FERNANDA ─── -->
+<div class="view active" id="view-fernanda">
+  <div class="date-nav">
+    <div class="date-arrow" onclick="changeDate(-1,'fernanda')"><i class="bi bi-chevron-left"></i></div>
+    <div class="date-center">
+      <div class="date-value" id="dn-val-fernanda"></div>
+      <div class="date-dow" id="dn-dow-fernanda"></div>
+    </div>
+    <div class="date-arrow" onclick="changeDate(1,'fernanda')"><i class="bi bi-chevron-right"></i></div>
+  </div>
+
+  <div class="dayoff-banner" id="dayoff-fernanda">
+    <i class="bi bi-calendar-x"></i> Dia sem expediente — não conta na sequência
+  </div>
+
+  <!-- Counter -->
+  <div class="counter-card">
+    <div class="counter-ring-wrap">
+      <svg class="counter-ring-svg" viewBox="0 0 82 82">
+        <circle class="ring-bg" cx="41" cy="41" r="34"/>
+        <circle class="ring-fill" cx="41" cy="41" r="34" id="ring-fernanda"
+          stroke-dasharray="213.6" stroke-dashoffset="213.6"/>
+      </svg>
+      <div class="counter-inner">
+        <div class="counter-num" id="cnt-num-fernanda">0</div>
+        <div class="counter-denom" id="cnt-den-fernanda">/24</div>
+      </div>
+    </div>
+    <div class="counter-info">
+      <div class="counter-label">Dias preenchidos</div>
+      <div class="counter-msg" id="cnt-msg-fernanda">Comece hoje!</div>
+      <div class="counter-sub" id="cnt-sub-fernanda">Abril 2026</div>
+      <div class="voucher-chip" id="cnt-chip-fernanda">
+        <i class="bi bi-gift"></i> <span>0 dias para o voucher</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Desperdício em destaque -->
+  <div class="results-card" id="desp-hero-fernanda" style="display:none;border-color:var(--red-soft);border-left-color:var(--red);margin-bottom:16px">
+    <div style="text-align:center">
+      <div style="font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--red);margin-bottom:4px"><i class="bi bi-exclamation-triangle-fill"></i> Oportunidade perdida hoje</div>
+      <div style="font-size:2rem;font-weight:900;color:var(--red)" id="desp-big-fernanda">R$ 0</div>
+      <div style="font-size:.72rem;color:var(--gray-400);margin-top:4px">Se todos tivessem levado algo a mais</div>
+    </div>
+  </div>
+
+  <!-- Results -->
+  <div class="results-card" id="results-fernanda" style="display:none">
+    <div class="results-title"><i class="bi bi-lightning-charge-fill"></i>Resultado de hoje</div>
+    <div class="results-grid">
+      <div class="result-item">
+        <div class="result-label">Aproveitamento</div>
+        <div class="result-value" id="r-conv-fernanda">—</div>
+      </div>
+      <div class="result-divider"></div>
+      <div class="result-item">
+        <div class="result-label">Ticket Médio</div>
+        <div class="result-value" id="r-ticket-fernanda">—</div>
+      </div>
+      <div class="result-divider"></div>
+      <div class="result-item">
+        <div class="result-label">Desperdício</div>
+        <div class="result-value" id="r-desp-fernanda">—</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Inputs lado a lado -->
+  <div class="input-grid">
+    <div class="input-card">
+      <div class="ic-header">
+        <div class="ic-icon" style="background:rgba(35,77,103,.08)">
+          <i class="bi bi-people-fill" style="color:var(--blue)"></i>
+        </div>
+        <div>
+          <div class="ic-label">Tutores</div>
+          <span class="ic-hint">Atendidos hoje</span>
+        </div>
+      </div>
+      <div class="ic-input-row">
+        <input class="ic-input" type="number" inputmode="numeric" pattern="[0-9]*"
+          placeholder="0" id="f-atendi-fernanda" oninput="calc('fernanda')">
+      </div>
+    </div>
+
+    <div class="input-card">
+      <div class="ic-header">
+        <div class="ic-icon" style="background:var(--green-soft)">
+          <i class="bi bi-bag-plus-fill" style="color:var(--green)"></i>
+        </div>
+        <div>
+          <div class="ic-label">Extras</div>
+          <span class="ic-hint">Levaram algo a mais</span>
+        </div>
+      </div>
+      <div class="ic-input-row">
+        <input class="ic-input" type="number" inputmode="numeric" pattern="[0-9]*"
+          placeholder="0" id="f-extra-fernanda" oninput="calc('fernanda')">
+      </div>
+    </div>
+
+    <div class="input-card">
+      <div class="ic-header">
+        <div class="ic-icon" style="background:var(--gold-soft)">
+          <i class="bi bi-cash-stack" style="color:var(--gold)"></i>
+        </div>
+        <div>
+          <div class="ic-label">Vendido</div>
+          <span class="ic-hint">Total R$ do dia</span>
+        </div>
+      </div>
+      <div class="ic-input-row">
+        <span class="ic-prefix">R$</span>
+        <input class="ic-input" type="number" inputmode="decimal" step="0.01"
+          placeholder="0" id="f-valor-fernanda" oninput="calc('fernanda')">
+      </div>
+    </div>
+  </div>
+
+  <!-- Calendar -->
+  <div class="streak-section">
+    <div class="streak-header">
+      <span class="streak-title">Sequência do mês</span>
+      <span class="streak-count" id="streak-label-fernanda">0 / 24 dias</span>
+    </div>
+    <div class="streak-dots" id="dots-fernanda"></div>
+  </div>
+
+  <button class="save-btn" id="save-btn-fernanda" onclick="save('fernanda')">
+    <i class="bi bi-check-circle-fill"></i> Salvar meu dia
+  </button>
+</div>
+
+
+<!-- ─── JOYCE ─── -->
+<div class="view" id="view-joyce">
+  <div class="date-nav">
+    <div class="date-arrow" onclick="changeDate(-1,'joyce')"><i class="bi bi-chevron-left"></i></div>
+    <div class="date-center">
+      <div class="date-value" id="dn-val-joyce"></div>
+      <div class="date-dow" id="dn-dow-joyce"></div>
+    </div>
+    <div class="date-arrow" onclick="changeDate(1,'joyce')"><i class="bi bi-chevron-right"></i></div>
+  </div>
+
+  <div class="dayoff-banner" id="dayoff-joyce">
+    <i class="bi bi-calendar-x"></i> Dia sem expediente — não conta na sequência
+  </div>
+
+  <div class="counter-card">
+    <div class="counter-ring-wrap">
+      <svg class="counter-ring-svg" viewBox="0 0 82 82">
+        <circle class="ring-bg" cx="41" cy="41" r="34"/>
+        <circle class="ring-fill" cx="41" cy="41" r="34" id="ring-joyce"
+          stroke-dasharray="213.6" stroke-dashoffset="213.6"/>
+      </svg>
+      <div class="counter-inner">
+        <div class="counter-num" id="cnt-num-joyce">0</div>
+        <div class="counter-denom" id="cnt-den-joyce">/24</div>
+      </div>
+    </div>
+    <div class="counter-info">
+      <div class="counter-label">Dias preenchidos</div>
+      <div class="counter-msg" id="cnt-msg-joyce">Comece hoje!</div>
+      <div class="counter-sub" id="cnt-sub-joyce">Abril 2026</div>
+      <div class="voucher-chip" id="cnt-chip-joyce">
+        <i class="bi bi-gift"></i> <span>0 dias para o voucher</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="results-card" id="desp-hero-joyce" style="display:none;border-color:var(--red-soft);border-left-color:var(--red);margin-bottom:16px">
+    <div style="text-align:center">
+      <div style="font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--red);margin-bottom:4px"><i class="bi bi-exclamation-triangle-fill"></i> Oportunidade perdida hoje</div>
+      <div style="font-size:2rem;font-weight:900;color:var(--red)" id="desp-big-joyce">R$ 0</div>
+      <div style="font-size:.72rem;color:var(--gray-400);margin-top:4px">Se todos tivessem levado algo a mais</div>
+    </div>
+  </div>
+
+  <div class="results-card" id="results-joyce" style="display:none">
+    <div class="results-title"><i class="bi bi-lightning-charge-fill"></i>Resultado de hoje</div>
+    <div class="results-grid">
+      <div class="result-item">
+        <div class="result-label">Aproveitamento</div>
+        <div class="result-value" id="r-conv-joyce">—</div>
+      </div>
+      <div class="result-divider"></div>
+      <div class="result-item">
+        <div class="result-label">Ticket Médio</div>
+        <div class="result-value" id="r-ticket-joyce">—</div>
+      </div>
+      <div class="result-divider"></div>
+      <div class="result-item">
+        <div class="result-label">Desperdício</div>
+        <div class="result-value" id="r-desp-joyce">—</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="input-grid">
+    <div class="input-card">
+      <div class="ic-header">
+        <div class="ic-icon" style="background:rgba(35,77,103,.08)"><i class="bi bi-people-fill" style="color:var(--blue)"></i></div>
+        <div><div class="ic-label">Tutores</div><span class="ic-hint">Atendidos hoje</span></div>
+      </div>
+      <div class="ic-input-row"><input class="ic-input" type="number" inputmode="numeric" placeholder="0" id="f-atendi-joyce" oninput="calc('joyce')"></div>
+    </div>
+    <div class="input-card">
+      <div class="ic-header">
+        <div class="ic-icon" style="background:var(--green-soft)"><i class="bi bi-bag-plus-fill" style="color:var(--green)"></i></div>
+        <div><div class="ic-label">Extras</div><span class="ic-hint">Levaram algo a mais</span></div>
+      </div>
+      <div class="ic-input-row"><input class="ic-input" type="number" inputmode="numeric" placeholder="0" id="f-extra-joyce" oninput="calc('joyce')"></div>
+    </div>
+    <div class="input-card">
+      <div class="ic-header">
+        <div class="ic-icon" style="background:var(--gold-soft)"><i class="bi bi-cash-stack" style="color:var(--gold)"></i></div>
+        <div><div class="ic-label">Vendido</div><span class="ic-hint">Total R$ do dia</span></div>
+      </div>
+      <div class="ic-input-row"><span class="ic-prefix">R$</span><input class="ic-input" type="number" inputmode="decimal" step="0.01" placeholder="0" id="f-valor-joyce" oninput="calc('joyce')"></div>
+    </div>
+  </div>
+
+  <div class="streak-section">
+    <div class="streak-header">
+      <span class="streak-title">Sequência do mês</span>
+      <span class="streak-count" id="streak-label-joyce">0 / 24 dias</span>
+    </div>
+    <div class="streak-dots" id="dots-joyce"></div>
+  </div>
+
+  <button class="save-btn" id="save-btn-joyce" onclick="save('joyce')">
+    <i class="bi bi-check-circle-fill"></i> Salvar meu dia
+  </button>
+</div>
+
+
+<!-- ─── AMANDA ─── -->
+<div class="view" id="view-amanda">
+  <div class="date-nav">
+    <div class="date-arrow" onclick="changeDate(-1,'amanda')"><i class="bi bi-chevron-left"></i></div>
+    <div class="date-center">
+      <div class="date-value" id="dn-val-amanda"></div>
+      <div class="date-dow" id="dn-dow-amanda"></div>
+    </div>
+    <div class="date-arrow" onclick="changeDate(1,'amanda')"><i class="bi bi-chevron-right"></i></div>
+  </div>
+
+  <div class="dayoff-banner" id="dayoff-amanda">
+    <i class="bi bi-calendar-x"></i> Dia sem expediente — não conta na sequência
+  </div>
+
+  <div class="counter-card">
+    <div class="counter-ring-wrap">
+      <svg class="counter-ring-svg" viewBox="0 0 82 82">
+        <circle class="ring-bg" cx="41" cy="41" r="34"/>
+        <circle class="ring-fill" cx="41" cy="41" r="34" id="ring-amanda"
+          stroke-dasharray="213.6" stroke-dashoffset="213.6"/>
+      </svg>
+      <div class="counter-inner">
+        <div class="counter-num" id="cnt-num-amanda">0</div>
+        <div class="counter-denom" id="cnt-den-amanda">/24</div>
+      </div>
+    </div>
+    <div class="counter-info">
+      <div class="counter-label">Dias preenchidos</div>
+      <div class="counter-msg" id="cnt-msg-amanda">Comece hoje!</div>
+      <div class="counter-sub" id="cnt-sub-amanda">Abril 2026</div>
+      <div class="voucher-chip" id="cnt-chip-amanda">
+        <i class="bi bi-gift"></i> <span>0 dias para o voucher</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="input-card">
+    <div class="ic-header">
+      <div class="ic-icon" style="background:rgba(35,77,103,.08)">
+        <i class="bi bi-people-fill" style="color:var(--blue)"></i>
+      </div>
+      <div>
+        <div class="ic-label">Tutores atendidos</div>
+        <span class="ic-hint">Todos que passaram por você hoje</span>
+      </div>
+    </div>
+    <div class="ic-input-row">
+      <input class="ic-input" type="number" inputmode="numeric" pattern="[0-9]*"
+        placeholder="0" id="f-atendi-amanda" oninput="calc('amanda')">
+      <span class="ic-unit">tutores</span>
+    </div>
+  </div>
+
+  <div class="input-card">
+    <div class="ic-header">
+      <div class="ic-icon" style="background:var(--green-soft)">
+        <i class="bi bi-bag-plus-fill" style="color:var(--green)"></i>
+      </div>
+      <div>
+        <div class="ic-label">Levaram algo a mais</div>
+        <span class="ic-hint">Compraram ALÉM do serviço que vieram fazer</span>
+      </div>
+    </div>
+    <div class="ic-input-row">
+      <input class="ic-input" type="number" inputmode="numeric" pattern="[0-9]*"
+        placeholder="0" id="f-extra-amanda" oninput="calc('amanda')">
+      <span class="ic-unit">extras</span>
+    </div>
+  </div>
+
+  <div class="input-card">
+    <div class="ic-header">
+      <div class="ic-icon" style="background:var(--gold-soft)">
+        <i class="bi bi-cash-stack" style="color:var(--gold)"></i>
+      </div>
+      <div>
+        <div class="ic-label">Total vendido hoje</div>
+        <span class="ic-hint">Valor total do dia — pega direto do sistema</span>
+      </div>
+    </div>
+    <div class="ic-input-row">
+      <span class="ic-prefix">R$</span>
+      <input class="ic-input" type="number" inputmode="decimal" step="0.01"
+        placeholder="0" id="f-valor-amanda" oninput="calc('amanda')">
+    </div>
+  </div>
+
+  <div class="results-card" id="results-amanda" style="display:none">
+    <div class="results-title"><i class="bi bi-lightning-charge-fill"></i>Resultado de hoje</div>
+    <div class="results-grid">
+      <div class="result-item">
+        <div class="result-label">Aproveitamento</div>
+        <div class="result-value" id="r-conv-amanda">—</div>
+      </div>
+      <div class="result-divider"></div>
+      <div class="result-item">
+        <div class="result-label">Ticket Médio</div>
+        <div class="result-value" id="r-ticket-amanda">—</div>
+      </div>
+      <div class="result-divider"></div>
+      <div class="result-item">
+        <div class="result-label">Desperdício</div>
+        <div class="result-value" id="r-desp-amanda">—</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="streak-section">
+    <div class="streak-header">
+      <span class="streak-title">Sequência do mês</span>
+      <span class="streak-count" id="streak-label-amanda">0 / 24 dias</span>
+    </div>
+    <div class="streak-dots" id="dots-amanda"></div>
+  </div>
+
+  <button class="save-btn" id="save-btn-amanda" onclick="save('amanda')">
+    <i class="bi bi-check-circle-fill"></i> Salvar meu dia
+  </button>
+</div>
+
+
+<!-- ─── VISÃO AMANDA ─── -->
+<div class="view" id="view-visao">
+  <div class="visao-date" id="visao-date-label"></div>
+
+  <div class="kpi-hero">
+    <div class="kpi">
+      <div class="kpi-label">Tutores</div>
+      <div class="kpi-value" id="v-tutores">—</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Extras vendidos</div>
+      <div class="kpi-value" id="v-extras">—</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Aproveitamento</div>
+      <div class="kpi-value" id="v-conv">—</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Ticket Médio</div>
+      <div class="kpi-value" id="v-ticket">—</div>
+    </div>
+    <div class="kpi full">
+      <div class="kpi-label">Faturamento total do dia</div>
+      <div class="kpi-value gold" id="v-fat">—</div>
+    </div>
+  </div>
+
+  <div class="rank-section">
+    <div class="rank-title">Ranking — Aproveitamento</div>
+    <div id="rank-conv-list"></div>
+  </div>
+
+  <div class="rank-section">
+    <div class="rank-title">Ranking — Ticket Médio</div>
+    <div id="rank-ticket-list"></div>
+  </div>
+
+  <div class="rank-section">
+    <div class="rank-title">Dedicação — Dias Preenchidos</div>
+    <div id="rank-streak-list"></div>
+  </div>
+</div>
+
+</div><!-- /main -->
+
+<div class="celebrate-overlay" id="cel-overlay" onclick="hideCelebrate()"></div>
+<div class="celebrate" id="cel-card">
+  <div class="celebrate-icon"><i class="bi bi-trophy-fill"></i></div>
+  <div class="celebrate-title" id="cel-title"></div>
+  <div class="celebrate-msg" id="cel-msg"></div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+// ════════ CONFIG ════════
+const PEOPLE = ['fernanda','joyce','amanda'];
+const NAMES = {fernanda:'Fernanda',joyce:'Joyce',amanda:'Amanda'};
+
+// Feriados abril 2026
+const HOLIDAYS = ['2026-04-03','2026-04-21'];
+// Dias úteis totais em abril 2026 (Seg-Sáb exceto feriados)
+const TOTAL_WORK_DAYS = 24;
+// Voucher: preencher mínimo de dias
+const VOUCHER_MIN = 22;
+
+// ════════ DATE STATE ════════
+const personDate = {fernanda:new Date(),joyce:new Date(),amanda:new Date()};
+const globalDate = new Date();
+
+function dateKey(d){
+  const y = d.getFullYear();
+  const m = String(d.getMonth()+1).padStart(2,'0');
+  const day = String(d.getDate()).padStart(2,'0');
+  return `${y}-${m}-${day}`;
+}
+function isHoliday(d){ return HOLIDAYS.includes(dateKey(d)) }
+function isSunday(d){ return d.getDay() === 0 }
+function isWorkDay(d){ return !isSunday(d) && !isHoliday(d) }
+
+const DOWS = ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'];
+const MONTHS = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
+
+function fmtDateDisplay(d){
+  return `${String(d.getDate()).padStart(2,'0')}/${String(d.getMonth()+1).padStart(2,'0')}`;
+}
+function fmtDow(d){ return DOWS[d.getDay()] }
+
+// ════════ UPDATE DATE DISPLAY ════════
+function updateDateDisplay(person){
+  const d = personDate[person];
+  const el = document.getElementById('dn-val-'+person);
+  const dw = document.getElementById('dn-dow-'+person);
+  if(el) el.textContent = fmtDateDisplay(d)+' / '+MONTHS[d.getMonth()];
+  if(dw) dw.textContent = fmtDow(d);
+  loadDay(person);
+}
+function changeDate(dir, person){
+  const d = personDate[person];
+  d.setDate(d.getDate()+dir);
+  updateDateDisplay(person);
+}
+
+// Header badge
+function updateHeaderBadge(){
+  const d = new Date();
+  const el = document.getElementById('global-date-badge');
+  if(el) el.textContent = fmtDateDisplay(d)+' — '+DOWS[d.getDay()];
+}
+
+// ════════ STORAGE ════════
+function storeKey(person,d){ return `mdd4-${person}-${dateKey(d||personDate[person])}` }
+function loadData(person,d){ try{return JSON.parse(localStorage.getItem(storeKey(person,d)))||null}catch{return null} }
+function saveRec(person,data){ localStorage.setItem(storeKey(person), JSON.stringify(data)) }
+
+// ════════ LOAD DAY ════════
+function loadDay(person){
+  const data = loadData(person);
+  setField('f-atendi-'+person, data?.atendi||'');
+  setField('f-extra-'+person, data?.extra||'');
+  setField('f-valor-'+person, data?.valor||'');
+  calc(person);
+  updateCounter(person);
+  buildDots(person);
+
+  const currentD = personDate[person];
+  const off = !isWorkDay(currentD);
+  const banner = document.getElementById('dayoff-'+person);
+  if(banner) banner.classList.toggle('show', off);
+
+  const btn = document.getElementById('save-btn-'+person);
+  btn.disabled = off;
+  if(off){
+    btn.innerHTML = '<i class="bi bi-calendar-x"></i> Sem expediente';
+  } else if(data){
+    btn.innerHTML = '<i class="bi bi-check-circle-fill"></i> Atualizar';
+    btn.classList.add('done');
+  } else {
+    btn.innerHTML = '<i class="bi bi-check-circle-fill"></i> Salvar meu dia';
+    btn.classList.remove('done');
+  }
+}
+function setField(id, val){ const el=document.getElementById(id); if(el) el.value=val }
+
+// ════════ CALC ════════
+function calc(person){
+  const atendi = parseInt(document.getElementById('f-atendi-'+person)?.value)||0;
+  const extra = parseInt(document.getElementById('f-extra-'+person)?.value)||0;
+  const valor = parseFloat(document.getElementById('f-valor-'+person)?.value)||0;
+
+  const res = document.getElementById('results-'+person);
+  if(!res) return;
+
+  if(atendi===0 && extra===0 && valor===0){ res.style.display='none'; return; }
+  res.style.display='block';
+
+  // Aproveitamento = % dos tutores que levaram algo a mais
+  const aprov = atendi>0 ? (extra/atendi*100) : 0;
+  // Ticket Médio = valor total / tutores atendidos
+  const ticket = atendi>0 ? (valor/atendi) : 0;
+  // Desperdício = potencial perdido
+  // Se todos tivessem o ticket de quem comprou extra, quanto seria?
+  const ticketExtra = extra>0 ? (valor/extra) : 0;
+  const potencial = ticketExtra * atendi;
+  const desp = Math.max(0, potencial - valor);
+
+  const convEl = document.getElementById('r-conv-'+person);
+  convEl.textContent = aprov.toFixed(0)+'%';
+  convEl.className = 'result-value '+(aprov>=40?'good':aprov>=25?'warn':'bad');
+
+  const tickEl = document.getElementById('r-ticket-'+person);
+  tickEl.textContent = 'R$'+ticket.toFixed(0);
+  tickEl.className = 'result-value '+(ticket>=100?'good':'neutral');
+
+  const despEl = document.getElementById('r-desp-'+person);
+  despEl.textContent = 'R$'+desp.toFixed(0);
+  despEl.className = 'result-value '+(desp>500?'bad':'warn');
+}
+
+// ════════ SAVE ════════
+function save(person){
+  const atendi = document.getElementById('f-atendi-'+person)?.value;
+  const extra = document.getElementById('f-extra-'+person)?.value;
+  const valor = document.getElementById('f-valor-'+person)?.value;
+
+  if(!atendi && !extra && !valor){ showToast('Preencha ao menos um campo'); return; }
+
+  const currentD = personDate[person];
+  if(!isWorkDay(currentD)){
+    const motivo = isSunday(currentD) ? 'domingo' : 'feriado';
+    showToast('Hoje é '+motivo+' — não conta como dia útil');
+    return;
+  }
+
+  saveRec(person, {atendi,extra,valor,savedAt:new Date().toISOString()});
+
+  const btn = document.getElementById('save-btn-'+person);
+  btn.innerHTML = '<i class="bi bi-check-circle-fill"></i> Salvo!';
+  btn.classList.add('done');
+  setTimeout(()=>{
+    btn.innerHTML = '<i class="bi bi-check-circle-fill"></i> Atualizar';
+  },1500);
+
+  updateCounter(person);
+  buildDots(person);
+  const filled = countFilledDays(person);
+  showCelebrate(person, filled);
+}
+
+// ════════ COUNTER ════════
+function countFilledDays(person){
+  const now = new Date();
+  const y = now.getFullYear(), m = now.getMonth();
+  let filled = 0;
+  const daysInMonth = new Date(y,m+1,0).getDate();
+  for(let day=1; day<=daysInMonth; day++){
+    const d = new Date(y,m,day);
+    if(!isWorkDay(d)) continue;
+    if(loadData(person,d)) filled++;
+  }
+  return filled;
+}
+
+function updateCounter(person){
+  const filled = countFilledDays(person);
+  const remaining = Math.max(0, VOUCHER_MIN - filled);
+  const pct = filled / TOTAL_WORK_DAYS;
+  const circ = 213.6;
+  const offset = circ - (circ * pct);
+
+  const ring = document.getElementById('ring-'+person);
+  if(ring) ring.style.strokeDashoffset = offset;
+
+  const numEl = document.getElementById('cnt-num-'+person);
+  if(numEl) numEl.textContent = filled;
+
+  const msgEl = document.getElementById('cnt-msg-'+person);
+  if(msgEl){
+    if(filled === 0) msgEl.textContent = 'Comece hoje!';
+    else if(filled >= VOUCHER_MIN) msgEl.textContent = 'Voucher garantido!';
+    else msgEl.textContent = `${filled} de ${TOTAL_WORK_DAYS} dias`;
+  }
+
+  const chipEl = document.getElementById('cnt-chip-'+person);
+  if(chipEl){
+    if(filled >= VOUCHER_MIN){
+      chipEl.innerHTML = '<i class="bi bi-gift-fill"></i> Voucher garantido!';
+      chipEl.style.background = 'rgba(39,174,96,.12)';
+      chipEl.style.borderColor = 'rgba(39,174,96,.3)';
+      chipEl.style.color = 'var(--green)';
+    } else {
+      chipEl.innerHTML = `<i class="bi bi-gift"></i> Faltam ${remaining} dias`;
+    }
+  }
+
+  // Update streak label
+  const strEl = document.getElementById('streak-label-'+person);
+  if(strEl) strEl.textContent = filled+' / '+TOTAL_WORK_DAYS+' dias';
+}
+
+// ════════ STREAK DOTS ════════
+function buildDots(person){
+  const container = document.getElementById('dots-'+person);
+  if(!container) return;
+  const now = new Date();
+  const y = now.getFullYear(), m = now.getMonth();
+  const daysInMonth = new Date(y,m+1,0).getDate();
+  const todayKey = dateKey(now);
+
+  let html = '';
+  // Só dias úteis (sem domingo, sem feriado)
+  for(let day=1; day<=daysInMonth; day++){
+    const d = new Date(y,m,day);
+    if(!isWorkDay(d)) continue;
+    const key = dateKey(d);
+    const filled = loadData(person,d) !== null;
+    const today = key === todayKey;
+    let cls = 'streak-dot';
+    if(filled) cls += ' filled';
+    if(today) cls += ' today';
+    html += `<div class="${cls}" title="Dia ${day}"></div>`;
+  }
+  container.innerHTML = html;
+}
+
+// ════════ CELEBRATE ════════
+const CELEBRATE_MSGS = [
+  {title:'Mais um dia!', msg:'Cada registro conta. Você está construindo o hábito.'},
+  {title:'Mandou bem!', msg:'Consistência é o que separa quem vende de quem só atende.'},
+  {title:'Registrado!', msg:'Seus dados de hoje já estão salvos. Amanhã tem mais!'},
+  {title:'Boa!', msg:'Quem registra, mede. Quem mede, melhora.'},
+  {title:'Dia fechado!', msg:'Mais um passo rumo ao voucher. Continue assim!'},
+];
+function showCelebrate(person, filled){
+  const idx = Math.floor(Math.random()*CELEBRATE_MSGS.length);
+  const m = CELEBRATE_MSGS[idx];
+  const remaining = Math.max(0, VOUCHER_MIN - filled);
+
+  document.getElementById('cel-title').textContent = m.title;
+  let msg = m.msg;
+  if(remaining > 0 && remaining <= 5){
+    msg += ` Faltam só ${remaining} dias para o voucher!`;
+  } else if(remaining === 0){
+    msg = 'Voucher garantido! Você é exemplo de dedicação.';
+  }
+  document.getElementById('cel-msg').textContent = msg;
+
+  document.getElementById('cel-overlay').classList.add('show');
+  document.getElementById('cel-card').classList.add('show');
+  setTimeout(hideCelebrate, 2500);
+}
+function hideCelebrate(){
+  document.getElementById('cel-overlay').classList.remove('show');
+  document.getElementById('cel-card').classList.remove('show');
+}
+
+// ════════ VISÃO ════════
+function updateVisao(){
+  const today = new Date();
+  const viEl = document.getElementById('visao-date-label');
+  if(viEl) viEl.textContent = fmtDateDisplay(today)+' — '+DOWS[today.getDay()];
+
+  let totAtendi=0, totExtra=0, totVal=0;
+  const pData = [];
+
+  PEOPLE.forEach(p=>{
+    const d = loadData(p, today);
+    const at = d ? (parseInt(d.atendi)||0) : 0;
+    const ex = d ? (parseInt(d.extra)||0) : 0;
+    const va = d ? (parseFloat(d.valor)||0) : 0;
+    totAtendi+=at; totExtra+=ex; totVal+=va;
+    const aprov = at>0 ? ex/at*100 : 0;
+    const ticket = at>0 ? va/at : 0;
+    const streak = countFilledDays(p);
+    pData.push({name:NAMES[p], person:p, at,ex,va,aprov,ticket,streak});
+  });
+
+  const aprovTot = totAtendi>0 ? (totExtra/totAtendi*100) : 0;
+  const tickTot = totAtendi>0 ? (totVal/totAtendi) : 0;
+
+  setText('v-tutores', totAtendi||'—');
+  setText('v-extras', totExtra||'—');
+  setText('v-conv', aprovTot>0 ? aprovTot.toFixed(0)+'%' : '—');
+  setText('v-ticket', tickTot>0 ? 'R$'+tickTot.toFixed(0) : '—');
+  setText('v-fat', totVal>0 ? 'R$ '+totVal.toLocaleString('pt-BR',{minimumFractionDigits:2}) : '—');
+
+  const sortedConv = [...pData].sort((a,b)=>b.aprov-a.aprov);
+  const sortedTicket = [...pData].sort((a,b)=>b.ticket-a.ticket);
+  const sortedStreak = [...pData].sort((a,b)=>b.streak-a.streak);
+
+  document.getElementById('rank-conv-list').innerHTML = buildRank(sortedConv, p=>{
+    return {val: p.aprov>0 ? p.aprov.toFixed(0)+'%' : '—', cls: p.aprov>=40?'good':p.aprov>0?'warn':'neutral'};
+  });
+  document.getElementById('rank-ticket-list').innerHTML = buildRank(sortedTicket, p=>{
+    return {val: p.ticket>0 ? 'R$'+p.ticket.toFixed(0) : '—', cls: p.ticket>=100?'good':'neutral'};
+  });
+  document.getElementById('rank-streak-list').innerHTML = buildRank(sortedStreak, p=>{
+    const won = p.streak >= VOUCHER_MIN;
+    return {val: p.streak+'/'+TOTAL_WORK_DAYS, cls: won?'gold':'neutral'};
+  });
+}
+
+function buildRank(arr, valFn){
+  return arr.map((p,i)=>{
+    const {val,cls} = valFn(p);
+    const posClass = i===0?'p1':i===1?'p2':'p3';
+    return `<div class="rank-row">
+      <div class="rank-pos ${posClass}">${i+1}</div>
+      <div class="rank-name">${p.name}</div>
+      <div class="rank-val ${cls}">${val}</div>
+    </div>`;
+  }).join('');
+}
+
+function setText(id,val){ const el=document.getElementById(id); if(el) el.textContent=val }
+
+// ════════ TABS ════════
+let currentTab = 'fernanda';
+function switchTab(tab){
+  currentTab = tab;
+  document.querySelectorAll('.tab').forEach((t,i)=>{
+    t.classList.toggle('active', ['fernanda','joyce','amanda','visao'][i]===tab);
+  });
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  const v = document.getElementById('view-'+tab);
+  if(v) v.classList.add('active');
+  if(tab==='visao') updateVisao();
+}
+
+// ════════ TOAST ════════
+function showToast(msg){
+  const t = document.getElementById('toast');
+  t.textContent=msg;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2500);
+}
+
+// ════════ INIT ════════
+updateHeaderBadge();
+PEOPLE.forEach(p=>{ updateDateDisplay(p); });
+
+// Auto-switch tab from URL param (?tab=fernanda)
+const urlTab = new URLSearchParams(window.location.search).get('tab');
+if(urlTab && ['fernanda','joyce','amanda','visao'].includes(urlTab)){
+  switchTab(urlTab);
+}
+// If embedded in iframe, hide header for cleaner look
+if(window.self !== window.top){
+  const hdr = document.querySelector('.app-header');
+  if(hdr) hdr.style.display = 'none';
+  document.querySelector('.main').style.paddingTop = '16px';
+}
+</script>
+</body>
+</html>

@@ -1022,6 +1022,7 @@ tr.tot td { font-weight: 700; background: rgba(222,180,40,.06); border-top: 2px 
     <a class="nav-item active" id="nav-amanda" onclick="toggleSubnav('amanda-sub');switchView('amanda')"><i class="bi bi-person-workspace"></i> Amanda <i class="bi bi-chevron-down" style="font-size:10px;margin-left:auto;opacity:.4"></i></a>
     <div class="subnav" id="amanda-sub" style="display:none">
       <a class="nav-item nav-sub" id="nav-guia-pratico" onclick="switchView('guia-pratico')"><i class="bi bi-book" style="font-size:14px"></i> Guia Prático</a>
+        <a class="nav-item nav-sub" id="nav-meu-dia-amanda" onclick="switchView('meu-dia-amanda')"><i class="bi bi-sun" style="font-size:14px"></i> Meu Dia Zeloso</a>
     </div>
     <a class="nav-item" id="nav-marcia" onclick="switchView('marcia')"><i class="bi bi-person-hearts"></i> Márcia</a>
 
@@ -1029,7 +1030,9 @@ tr.tot td { font-weight: 700; background: rgba(222,180,40,.06); border-top: 2px 
     <a class="nav-item" id="nav-emporio" onclick="toggleSubnav('emporio-sub')"><i class="bi bi-shop"></i> Empório <i class="bi bi-chevron-down" style="font-size:10px;margin-left:auto;opacity:.4"></i></a>
     <div class="subnav" id="emporio-sub" style="display:none">
       <a class="nav-item nav-sub" id="nav-fernanda" onclick="switchView('fernanda')"><i class="bi bi-person" style="font-size:14px"></i> Fernanda</a>
+        <a class="nav-item nav-sub" id="nav-meu-dia-fernanda" onclick="switchView('meu-dia-fernanda')" style="padding-left:48px;font-size:11px"><i class="bi bi-sun" style="font-size:12px"></i> Meu Dia Zeloso</a>
       <a class="nav-item nav-sub" id="nav-joyce" onclick="switchView('joyce')"><i class="bi bi-person" style="font-size:14px"></i> Joyce</a>
+        <a class="nav-item nav-sub" id="nav-meu-dia-joyce" onclick="switchView('meu-dia-joyce')" style="padding-left:48px;font-size:11px"><i class="bi bi-sun" style="font-size:12px"></i> Meu Dia Zeloso</a>
     </div>
     <a class="nav-item" id="nav-spa" onclick="switchView('spa')"><i class="bi bi-droplet-half"></i> SPA Dermoprotetor</a>
     <a class="nav-item" id="nav-vetcare-nav" onclick="toggleSubnav('vetcare-sub')"><i class="bi bi-heart-pulse"></i> VetCare <i class="bi bi-chevron-down" style="font-size:10px;margin-left:auto;opacity:.4"></i></a>
@@ -2428,6 +2431,20 @@ tr.tot td { font-weight: 700; background: rgba(222,180,40,.06); border-top: 2px 
 
 </div><!-- fim view-guia-pratico -->
 
+<!-- VIEW MEU DIA ZELOSO — AMANDA -->
+<div class="person-view" id="view-meu-dia-amanda">
+  <div style="display:flex;align-items:center;gap:16px;margin-bottom:16px;padding:16px 20px;background:linear-gradient(135deg,rgba(222,180,40,.04),rgba(35,77,103,.06));border-radius:16px;border-left:4px solid var(--z-gold)">
+    <div style="width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--z-gold),var(--z-gold-light));display:flex;align-items:center;justify-content:center;font-size:18px;color:white;flex-shrink:0"><i class="bi bi-sun"></i></div>
+    <div>
+      <h2 style="font-size:18px;font-weight:800;color:var(--z-blue);margin:0;border:none;padding:0">Meu Dia Zeloso</h2>
+      <p style="font-size:12px;color:rgba(35,77,103,.5);margin:2px 0 0">30 segundos. Todo dia conta. Visão da supervisora.</p>
+    </div>
+  </div>
+  <iframe src="meu-dia-zeloso.html?tab=visao" style="width:100%;height:800px;border:none;border-radius:16px;background:var(--z-cream)"></iframe>
+</div><!-- fim view-meu-dia-amanda -->
+
+
+
 <!-- VIEW ADRIANA -->
 <div class="person-view" id="view-adriana">
 
@@ -2674,6 +2691,19 @@ tr.tot td { font-weight: 700; background: rgba(222,180,40,.06); border-top: 2px 
 
 </div>
 
+
+<!-- VIEW MEU DIA ZELOSO — FERNANDA -->
+<div class="person-view" id="view-meu-dia-fernanda">
+  <div style="display:flex;align-items:center;gap:16px;margin-bottom:16px;padding:16px 20px;background:linear-gradient(135deg,rgba(184,169,201,.06),rgba(35,77,103,.04));border-radius:16px;border-left:4px solid var(--z-spa)">
+    <div style="width:48px;height:48px;border-radius:50%;background:var(--z-spa);display:flex;align-items:center;justify-content:center;font-size:18px;color:white;flex-shrink:0"><i class="bi bi-sun"></i></div>
+    <div>
+      <h2 style="font-size:18px;font-weight:800;color:var(--z-blue);margin:0;border:none;padding:0">Meu Dia Zeloso — Fernanda</h2>
+      <p style="font-size:12px;color:rgba(35,77,103,.5);margin:2px 0 0">Registre seus números do dia. 30 segundos.</p>
+    </div>
+  </div>
+  <iframe src="meu-dia-zeloso.html?tab=fernanda" style="width:100%;height:800px;border:none;border-radius:16px;background:var(--z-cream)"></iframe>
+</div><!-- fim view-meu-dia-fernanda -->
+
 <!-- VIEW JOYCE (Empório) -->
 <div class="person-view" id="view-joyce">
 
@@ -2826,6 +2856,19 @@ tr.tot td { font-weight: 700; background: rgba(222,180,40,.06); border-top: 2px 
   </div>
 
 </div>
+
+
+<!-- VIEW MEU DIA ZELOSO — JOYCE -->
+<div class="person-view" id="view-meu-dia-joyce">
+  <div style="display:flex;align-items:center;gap:16px;margin-bottom:16px;padding:16px 20px;background:linear-gradient(135deg,rgba(94,155,107,.06),rgba(35,77,103,.04));border-radius:16px;border-left:4px solid var(--z-emporio)">
+    <div style="width:48px;height:48px;border-radius:50%;background:var(--z-emporio);display:flex;align-items:center;justify-content:center;font-size:18px;color:white;flex-shrink:0"><i class="bi bi-sun"></i></div>
+    <div>
+      <h2 style="font-size:18px;font-weight:800;color:var(--z-blue);margin:0;border:none;padding:0">Meu Dia Zeloso — Joyce</h2>
+      <p style="font-size:12px;color:rgba(35,77,103,.5);margin:2px 0 0">Registre seus números do dia. 30 segundos.</p>
+    </div>
+  </div>
+  <iframe src="meu-dia-zeloso.html?tab=joyce" style="width:100%;height:800px;border:none;border-radius:16px;background:var(--z-cream)"></iframe>
+</div><!-- fim view-meu-dia-joyce -->
 
 <!-- VIEW SUELLEN (VetCare) -->
 <div class="person-view" id="view-suellen">
@@ -3028,7 +3071,10 @@ var _viewTitles = {
   'estrategias-jogos': 'Estratégias & Jogos',
   'metas-mes': 'Metas do Mês',
   'banco-jogos': 'Banco de Jogos',
-  'senhas': 'Senhas'
+  'senhas': 'Senhas',
+  'meu-dia-amanda': 'Meu Dia Zeloso',
+  'meu-dia-fernanda': 'Meu Dia Zeloso',
+  'meu-dia-joyce': 'Meu Dia Zeloso'
 };
 
 function toggleSubnav(id){
