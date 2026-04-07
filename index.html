@@ -882,7 +882,7 @@ tr.tot td { font-weight: 700; background: rgba(222,180,40,.06); border-top: 2px 
 /* --- CALENDAR 5 ETAPAS --- */
 .etapas-cal-grid {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(7, 1fr);
   gap: 4px;
   margin: 12px 0;
 }
@@ -895,6 +895,7 @@ tr.tot td { font-weight: 700; background: rgba(222,180,40,.06); border-top: 2px 
   font-size: 13px; font-weight: 600;
 }
 .etapas-cal-grid .cal-d.fer { background: rgba(192,57,43,.08); color: #C0392B; text-decoration: line-through; }
+.etapas-cal-grid .cal-d.dom { background: var(--z-gray-100); color: var(--z-gray-400); opacity: .6; }
 .etapas-cal-grid .cal-d.sab { background: var(--z-gray-100); color: var(--z-gray-400); }
 .etapas-cal-grid .cal-d.e1 { border-left: 3px solid #C0392B; }
 .etapas-cal-grid .cal-d.e2 { border-left: 3px solid #27AE60; }
@@ -1175,7 +1176,7 @@ tr.tot td { font-weight: 700; background: rgba(222,180,40,.06); border-top: 2px 
         {periodo:'20–25/abr',dias:'4 + sáb',nota:'<span class="etapa-badge etapa-feriado">Tiradentes (21)</span>',peso:'20%'},
         {periodo:'27–30/abr',dias:'4',nota:'<span class="etapa-badge etapa-final">Push final</span> Sem sábado',peso:'18%'}
       ],
-      etapaDays: [[1,2,3,4],[6,7,8,9,10,11],[13,14,15,16,17,18],[20,21,22,23,24,25],[27,28,29,30]] /* sem domingos: 5,12,19,26 */
+      etapaDays: [[1,2,3,4,5],[6,7,8,9,10,11,12],[13,14,15,16,17,18,19],[20,21,22,23,24,25,26],[27,28,29,30]]
     },
     '2026-05': {
       label: 'Maio 2026', labelShort: 'MAI 2026', month: 4, year: 2026, diasUteis: 25,
@@ -1216,7 +1217,7 @@ tr.tot td { font-weight: 700; background: rgba(222,180,40,.06); border-top: 2px 
         {periodo:'18–24/mai',dias:'6 dias',nota:'<span class="etapa-badge etapa-cheia">Semana cheia</span>',peso:'24%'},
         {periodo:'25–31/mai',dias:'6 dias',nota:'<span class="etapa-badge etapa-final">Push final</span>',peso:'24%'}
       ],
-      etapaDays: [[1,2],[4,5,6,7,8,9],[11,12,13,14,15,16],[18,19,20,21,22,23],[25,26,27,28,29,30]] /* sem domingos: 3,10,17,24,31 */
+      etapaDays: [[1,2,3],[4,5,6,7,8,9,10],[11,12,13,14,15,16,17],[18,19,20,21,22,23,24],[25,26,27,28,29,30,31]]
     }
   };
 
@@ -4281,39 +4282,27 @@ function renderCalendarGrid(){
     return 0;
   }
 
-  /* Grid 6 colunas: Seg–Sáb. Domingo NÃO aparece. */
-  var h = '<div class="cal-hd">Seg</div><div class="cal-hd">Ter</div><div class="cal-hd">Qua</div><div class="cal-hd">Qui</div><div class="cal-hd">Sex</div><div class="cal-hd">Sáb</div>';
+  /* Grid 7 colunas: Dom–Sáb (padrão brasileiro) */
+  var h = '<div class="cal-hd">Dom</div><div class="cal-hd">Seg</div><div class="cal-hd">Ter</div><div class="cal-hd">Qua</div><div class="cal-hd">Qui</div><div class="cal-hd">Sex</div><div class="cal-hd">Sáb</div>';
 
-  /* Descobrir coluna do primeiro dia útil (0=Seg..5=Sáb) */
-  var firstDow = new Date(y,m,1).getDay(); /* 0=Dom..6=Sáb */
-  /* Mapear para grid: Seg=0, Ter=1, Qua=2, Qui=3, Sex=4, Sáb=5 */
-  function toGridCol(dow){ return dow === 0 ? -1 : dow - 1; } /* Dom=-1 (skip) */
-
-  var startCol = toGridCol(firstDow);
-  if(startCol === -1){
-    /* Mês começa no domingo — primeiro dia útil é segunda (dia 2) */
-    startCol = 0;
-  }
+  /* Primeiro dia do mês: getDay() retorna 0=Dom..6=Sáb — já alinhado com o grid */
+  var startCol = new Date(y,m,1).getDay();
   for(var i=0;i<startCol;i++) h += '<div class="cal-d" style="opacity:.15"></div>';
 
   for(var d=1;d<=daysInMonth;d++){
     var dow = new Date(y,m,d).getDay();
-    if(dow === 0) continue; /* Pular domingo */
-    var col = toGridCol(dow);
     var et = getEtapa(d);
     var cls = 'cal-d';
     if(et>0) cls += ' e'+et;
+    if(dow===0) cls += ' dom';
     if(dow===6) cls += ' sab';
     if(mc.feriadosCal.indexOf(d)>=0) cls += ' fer';
     if(d===todayDay) cls += ' hj';
     h += '<div class="'+cls+'">'+d+'</div>';
   }
 
-  /* Preencher células vazias no final */
-  var gridEl = document.createElement('div');
-  gridEl.innerHTML = h;
-  var cellCount = gridEl.querySelectorAll('.cal-d,.cal-hd').length - 6; /* menos os 6 headers */
-  var remaining = (6 - cellCount%6) % 6;
+  var totalCells = startCol + daysInMonth;
+  var remaining = (7 - totalCells%7) % 7;
   for(var i=0;i<remaining;i++) h += '<div class="cal-d" style="opacity:.15"></div>';
 
   var grid = document.getElementById('cal-etapas-grid');
