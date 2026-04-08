@@ -1222,10 +1222,10 @@ tr.tot td { font-weight: 700; background: rgba(222,180,40,.06); border-top: 2px 
         daycare:[8014,56092,5100,1458,2186]
       },
       poupanca: {
-        amanda:{gatilhos:[{area:'eco',metas:[106173,115825,125478],premios:[900,1250,1600]},{area:'total',metas:[193008,210555,228101],premios:[350,600,700]}],totais:[1250,1850,2300]},
-        fernanda:{gatilhos:[{area:'extras',metas:[8792,9592,10391],premios:[100,150,200]},{area:'banho',metas:[47320,51622,55923],premios:[200,300,350]},{area:'eco',metas:[106173,115825,125478],premios:[350,500,600]},{area:'total',metas:[193008,210555,228101],premios:[150,200,300]}],totais:[800,1150,1450]},
-        joyce:{gatilhos:[{area:'emporio',metas:[40693,44393,48092],premios:[350,500,700]},{area:'eco',metas:[106173,115825,125478],premios:[300,450,450]},{area:'total',metas:[193008,210555,228101],premios:[150,200,300]}],totais:[800,1150,1450]},
-        suellen:{gatilhos:[{area:'eco',metas:[106173,115825,125478],premios:[200,300,350]},{area:'total',metas:[193008,210555,228101],premios:[100,150,200]}],totais:[300,450,550]}
+        amanda:{gatilhos:[{area:'eco',metas:[106173,115825,125478],premios:[880,1300,1610]},{area:'total',metas:[193008,210555,228101],premios:[370,550,690]}],totais:[1250,1850,2300]},
+        fernanda:{gatilhos:[{area:'extras',metas:[8792,9592,10391],premios:[120,170,210]},{area:'banho',metas:[47320,51622,55923],premios:[200,280,360]},{area:'eco',metas:[106173,115825,125478],premios:[320,470,590]},{area:'total',metas:[193008,210555,228101],premios:[160,230,290]}],totais:[800,1150,1450]},
+        joyce:{gatilhos:[{area:'emporio',metas:[40693,44393,48092],premios:[400,580,730]},{area:'eco',metas:[106173,115825,125478],premios:[240,340,430]},{area:'total',metas:[193008,210555,228101],premios:[160,230,290]}],totais:[800,1150,1450]},
+        suellen:{gatilhos:[{area:'eco',metas:[106173,115825,125478],premios:[210,320,390]},{area:'total',metas:[193008,210555,228101],premios:[90,130,160]}],totais:[300,450,550]}
       },
       voucherMin: 23,
       etapaLabels: ['E1 · 01–03/mai','E2 · 04–10/mai','E3 · 11–17/mai','E4 · 18–24/mai','E5 · 25–31/mai'],
@@ -1240,6 +1240,47 @@ tr.tot td { font-weight: 700; background: rgba(222,180,40,.06); border-top: 2px 
         {periodo:'25–31/mai',dias:'6 dias',nota:'<span class="etapa-badge etapa-final">Push final</span>',peso:'24%'}
       ],
       etapaDays: [[1,2,3],[4,5,6,7,8,9,10],[11,12,13,14,15,16,17],[18,19,20,21,22,23,24],[25,26,27,28,29,30,31]]
+    },
+    '2026-06': {
+      label: 'Junho 2026', labelShort: 'JUN 2026', month: 5, year: 2026, diasUteis: 21,
+      feriadosCal: [4],
+      feriadosDates: ['2026-06-04'],
+      metas: {
+        extras:{base:9796,alvo:10686,ouro:11577},
+        banho:{base:42540,alvo:46408,ouro:50275},
+        emporio:{base:42738,alvo:46624,ouro:50509},
+        vet:{base:13532,alvo:14762,ouro:15993},
+        hosp:{base:26455,alvo:28860,ouro:31265},
+        daycare:{base:51154,alvo:55805,ouro:60455}
+      },
+      ecoBase:108606, totalBase:186216, spaBase:52336,
+      etapaMetas: {
+        extras:[1861,2351,2351,2351,882],
+        banho:[8084,10208,10208,10208,3832],
+        emporio:[8120,10258,10258,10258,3844],
+        vet:[2571,3247,3247,3247,1218],
+        hosp:[5027,6349,6349,6349,2381],
+        daycare:[9719,12280,12280,12280,4595]
+      },
+      poupanca: {
+        amanda:{gatilhos:[{area:'eco',metas:[108606,118480,128353],premios:[840,1230,1540]},{area:'total',metas:[186216,203144,220073],premios:[360,520,660]}],totais:[1200,1750,2200]},
+        fernanda:{gatilhos:[{area:'extras',metas:[9796,10686,11577],premios:[110,160,210]},{area:'banho',metas:[42540,46408,50275],premios:[180,270,350]},{area:'eco',metas:[108606,118480,128353],premios:[310,450,560]},{area:'total',metas:[186216,203144,220073],premios:[150,220,280]}],totais:[750,1100,1400]},
+        joyce:{gatilhos:[{area:'emporio',metas:[42738,46624,50509],premios:[380,550,700]},{area:'eco',metas:[108606,118480,128353],premios:[220,330,420]},{area:'total',metas:[186216,203144,220073],premios:[150,220,280]}],totais:[750,1100,1400]},
+        suellen:{gatilhos:[{area:'eco',metas:[108606,118480,128353],premios:[210,320,390]},{area:'total',metas:[186216,203144,220073],premios:[90,130,160]}],totais:[300,450,550]}
+      },
+      voucherMin: 19,
+      etapaLabels: ['E1 · 01–06/jun','E2 · 08–13/jun','E3 · 15–20/jun','E4 · 22–27/jun','E5 · 29–30/jun'],
+      etapaPesos: {extras:[19,24,24,24,9],banho:[19,24,24,24,9],emporio:[19,24,24,24,9],vet:[19,24,24,24,9],hosp:[19,24,24,24,9],daycare:[19,24,24,24,9]},
+      notasDaycare: 'Distribuição uniforme (sem pico sazonal)',
+      notasHosp: 'Distribuição uniforme',
+      etapaInfo: [
+        {periodo:'01–06/jun',dias:'4 + sáb',nota:'<span class="etapa-badge etapa-feriado">Corpus Christi (04)</span>',peso:'19%'},
+        {periodo:'08–13/jun',dias:'5 + sáb',nota:'<span class="etapa-badge etapa-cheia">Semana cheia</span>',peso:'24%'},
+        {periodo:'15–20/jun',dias:'5 + sáb',nota:'<span class="etapa-badge etapa-cheia">Semana cheia</span>',peso:'24%'},
+        {periodo:'22–27/jun',dias:'5 + sáb',nota:'<span class="etapa-badge etapa-cheia">Semana cheia</span>',peso:'24%'},
+        {periodo:'29–30/jun',dias:'2',nota:'<span class="etapa-badge etapa-final">Push final</span> Sem sábado',peso:'9%'}
+      ],
+      etapaDays: [[1,2,3,4,5,6],[7,8,9,10,11,12,13],[14,15,16,17,18,19,20],[21,22,23,24,25,26,27],[28,29,30]]
     }
   };
 
@@ -1342,6 +1383,7 @@ tr.tot td { font-weight: 700; background: rgba(222,180,40,.06); border-top: 2px 
     <select id="month-selector" onchange="trocarMes(this.value)" style="background:rgba(255,253,246,.08);color:var(--z-gold);border:1px solid rgba(222,180,40,.25);border-radius:8px;padding:6px 10px;font-family:var(--font);font-size:11px;font-weight:700;letter-spacing:1px;cursor:pointer;width:100%">
       <option value="2026-04">ABR 2026</option>
       <option value="2026-05">MAI 2026</option>
+      <option value="2026-06">JUN 2026</option>
     </select>
     <button class="theme-toggle" onclick="toggleTheme()" title="Alternar tema"><i class="bi bi-moon-fill" id="theme-icon"></i></button>
     <button onclick="sair()" style="background:none;border:1px solid rgba(255,253,246,.15);color:rgba(255,253,246,.5);font-family:var(--font);font-size:11px;padding:6px 12px;border-radius:8px;cursor:pointer;margin-top:8px;width:100%" title="Sair"><i class="bi bi-box-arrow-left" style="margin-right:4px"></i> Sair</button>
